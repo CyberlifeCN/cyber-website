@@ -1,0 +1,5 @@
+# Development, documentation & testing requirements.
+-e .
+
+# pip install tornado==4.3
+tornado=4.3

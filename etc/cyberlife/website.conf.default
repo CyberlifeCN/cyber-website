@@ -1,0 +1,21 @@
+
+###########################mysql config########################
+[db]
+db_name=torndb
+db_host=127.0.0.1
+db_port=3306
+db_user=root
+db_pass=mysql
+
+###########################tornado config######################
+[tornado]
+tornado_port=7030
+
+###########################logging config######################
+[log]
+#log_level=DEBUG
+log_level=INFO
+log_path=
+
+###########################default value config#################
+[default]
