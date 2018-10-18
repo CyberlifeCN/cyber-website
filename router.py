@@ -35,9 +35,20 @@ def map():
 
         (r'/', getattr(web, 'WebIndexHandle')),
         (r'/website/index', getattr(web, 'WebIndexHandle')),
+        (r'/website/index-2', getattr(web, 'WebIndex2Handle')),
         (r'/website/contact', getattr(web, 'WebContactHandle')),
         (r'/website/about-us', getattr(web, 'WebAboutUsHandle')),
         (r'/website/team', getattr(web, 'WebTeamHandle')),
+        (r'/website/faq', getattr(web, 'WebFaqHandle')),
+        (r'/website/blog-grid', getattr(web, 'WebBlogGridHandle')),
+        (r'/website/blog-list', getattr(web, 'WebBlogListHandle')),
+        (r'/website/blog-details', getattr(web, 'WebBlogDetailsHandle')),
+        (r'/website/project', getattr(web, 'WebProjectHandle')),
+        (r'/website/project-details', getattr(web, 'WebProjectDetailsHandle')),
+        (r'/website/service', getattr(web, 'WebServiceHandle')),
+        (r'/website/service-details', getattr(web, 'WebServiceDetailsHandle')),
+        (r'/website/shop', getattr(web, 'WebShopHandle')),
+        (r'/website/shop-single', getattr(web, 'WebShopSingleHandle')),
 
 
         # comm

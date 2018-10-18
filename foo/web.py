@@ -38,6 +38,12 @@ class WebIndexHandle(tornado.web.RequestHandler):
         self.render('index.html')
 
 
+class WebIndex2Handle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('index-2.html')
+
+
 class WebContactHandle(tornado.web.RequestHandler):
     def get(self):
         logging.info("GET %r", self.request.uri)
@@ -54,6 +60,66 @@ class WebTeamHandle(tornado.web.RequestHandler):
     def get(self):
         logging.info("GET %r", self.request.uri)
         self.render('team.html')
+
+
+class WebFaqHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('faq.html')
+
+
+class WebBlogGridHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('blog-grid.html')
+
+
+class WebBlogListHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('blog-list.html')
+
+
+class WebBlogDetailsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('blog-details.html')
+
+
+class WebProjectHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('project.html')
+
+
+class WebProjectDetailsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('project-details.html')
+
+
+class WebServiceHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('service.html')
+
+
+class WebServiceDetailsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('service-details.html')
+
+
+class WebShopHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('shop.html')
+
+
+class WebShopSingleHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('shop-single.html')
 
 
 class WebPageNotFoundHandle(tornado.web.RequestHandler):
