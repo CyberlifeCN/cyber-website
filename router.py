@@ -27,6 +27,7 @@ import tornado.web
 from foo import comm
 from foo import base_handler
 from foo import api_symbol
+from foo import api_article
 from foo import web
 
 
@@ -54,6 +55,8 @@ def map():
 
         (r'/website/api/symbols', getattr(api_symbol, 'SymbolXHR')),
         (r'/website/api/symbols/([a-z0-9]*)', getattr(api_symbol, 'SymbolSingleXHR')),
+        (r'/website/api/articles', getattr(api_article, 'ArticleXHR')),
+        (r'/website/api/articles/([a-z0-9]*)', getattr(api_article, 'ArticleSingleXHR')),
 
 
         # comm

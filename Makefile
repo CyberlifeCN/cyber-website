@@ -6,7 +6,7 @@ all:
 
 install: uninstall
 	mkdir -p $(SVCDIR)
-	cp -r foo static templates *.py $(SVCDIR)
+	cp -r foo static templates *.py *.sql $(SVCDIR)
 	cp -r etc $(DESTDIR)
 	-@tree $(SVCDIR) || find $(SVCDIR)
 
