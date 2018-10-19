@@ -7,7 +7,7 @@ pidfile = /run/cyber-ssdb-article.pid
 
 server:
 	ip: 127.0.0.1
-	port: 12315
+	port: 12365
 	# bind to public ip
 	#ip: 0.0.0.0
 	# format: allow|deny: all|ip_prefix

@@ -4,7 +4,7 @@ make rpm package on centos7, but I think this project can run on anything linux.
 
 
 ## 功能
-* 静态网站
+* 网站UI
 * 创建文章
 * 文章列表
 * 文章分类
@@ -31,6 +31,10 @@ systemctl enable nginx
 yum -y install mariadb mariadb-server
 systemctl start mariadb
 systemctl enable mariadb
+```
+### 安装ssdb
+```
+rpm -Uvh ssdb-1.95-7.el7.x86_64.rpm
 ```
 ### 安装 pip
 ```

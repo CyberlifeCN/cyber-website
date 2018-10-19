@@ -26,6 +26,7 @@ import tornado.web
 
 from foo import comm
 from foo import base_handler
+from foo import api_symbol
 from foo import web
 
 
@@ -49,6 +50,10 @@ def map():
         (r'/website/service-details', getattr(web, 'WebServiceDetailsHandle')),
         (r'/website/shop', getattr(web, 'WebShopHandle')),
         (r'/website/shop-single', getattr(web, 'WebShopSingleHandle')),
+
+
+        (r'/website/api/symbols', getattr(api_symbol, 'SymbolXHR')),
+        (r'/website/api/symbols/([a-z0-9]*)', getattr(api_symbol, 'SymbolSingleXHR')),
 
 
         # comm

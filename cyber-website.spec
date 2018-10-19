@@ -36,6 +36,14 @@ do
         fi
 done
 
+for default_config in /etc/cyberlife/*ssdb-article*.default
+do
+        config=${default_config%.default}
+        if [ ! -f $config ]; then
+                cp $default_config $config
+        fi
+done
+
 mkdir -p /opt/cyberlife/logs
 mkdir -p /opt/cyberlife/data/ssdb-article
 

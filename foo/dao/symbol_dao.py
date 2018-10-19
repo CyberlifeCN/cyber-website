@@ -32,7 +32,7 @@ import json as JSON # 启用别名，不会跟方法里的局部变量混淆
 
 
 from SSDB import SSDB
-# /usr/local/ssdb/ssdb-server -d /usr/local/ssdb/ssdb.conf -s start
+# /opt/ssdb/ssdb-server -d /etc/cyberlife/cyber-ssdb-article.conf -s start
 # help http://ssdb.io/docs/zh_cn/php/
 try:
 	pass
