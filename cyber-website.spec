@@ -37,9 +37,14 @@ do
 done
 
 mkdir -p /opt/cyberlife/logs
+mkdir -p /opt/cyberlife/data/ssdb-article
 
 systemctl enable cyber-website.service
 systemctl restart cyber-website.service
+systemctl enable cyber-website-swagger.service
+systemctl restart cyber-website-swagger.service
+systemctl enable cyber-ssdb-article.service
+systemctl restart cyber-ssdb-article.service
 systemctl enable nginx.service
 systemctl restart nginx.service
 

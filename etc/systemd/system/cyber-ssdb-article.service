@@ -1,0 +1,13 @@
+[Unit]
+Description=Cyberlife cyber-ssdb-article Service
+After=network.target network-online.target
+
+[Service]
+ExecStartPre=/usr/bin/mkdir -p /opt/cyberlife/data/ssdb-article
+ExecStart=/opt/ssdb/ssdb-server /etc/cyberlife/ssdb-article.conf -s restart
+Type=simple
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

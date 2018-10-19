@@ -1,7 +1,7 @@
 [Unit]
 Description=CyberLife Website Service
-After=nginx.service
-Wants=nginx.service
+After=nginx.service cyber-ssdb-article
+Wants=nginx.service cyber-ssdb-article
 
 [Service]
 WorkingDirectory=/opt/cyberlife/service/cyber-website
