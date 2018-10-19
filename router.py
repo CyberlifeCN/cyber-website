@@ -28,6 +28,9 @@ from foo import comm
 from foo import base_handler
 from foo import api_symbol
 from foo import api_article
+from foo import api_category
+from foo import api_article_categories
+from foo import api_category_articles
 from foo import web
 
 
@@ -52,12 +55,14 @@ def map():
         (r'/website/shop', getattr(web, 'WebShopHandle')),
         (r'/website/shop-single', getattr(web, 'WebShopSingleHandle')),
 
-
         (r'/website/api/symbols', getattr(api_symbol, 'SymbolXHR')),
-        (r'/website/api/symbols/([a-z0-9]*)', getattr(api_symbol, 'SymbolSingleXHR')),
+        (r'/website/api/symbols/([a-z0-9]+)', getattr(api_symbol, 'SymbolSingleXHR')),
         (r'/website/api/articles', getattr(api_article, 'ArticleXHR')),
-        (r'/website/api/articles/([a-z0-9]*)', getattr(api_article, 'ArticleSingleXHR')),
-
+        (r'/website/api/articles/([a-z0-9]+)', getattr(api_article, 'ArticleSingleXHR')),
+        (r'/website/api/categories', getattr(api_category, 'CategoryXHR')),
+        (r'/website/api/categories/([a-z0-9]+)', getattr(api_category, 'CategorySingleXHR')),
+        (r'/website/api/articles/([a-z0-9]+)/categories', getattr(api_article_categories, 'ArticleCategoriesXHR')),
+        (r'/website/api/categories/([a-z0-9]+)/articles', getattr(api_category_articles, 'CategoryArticlesXHR')),
 
         # comm
         ('.*', getattr(web, 'WebPageNotFoundHandle'))
