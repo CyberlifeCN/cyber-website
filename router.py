@@ -32,11 +32,15 @@ from foo import api_category
 from foo import api_article_categories
 from foo import api_category_articles
 from foo import web
+from foo import admin
 
 
 def map():
 
     config = [
+
+        (r'/admin/blog-grid', getattr(admin, 'AdminBlogGridHandle')),
+        (r'/admin/blog-create', getattr(admin, 'AdminBlogCreateHandle')),
 
         (r'/', getattr(web, 'WebIndexHandle')),
         (r'/website/index', getattr(web, 'WebIndexHandle')),
