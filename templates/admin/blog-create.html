@@ -10,6 +10,8 @@
 
 		<title>inobiz -  Business & Agency Template</title>
 
+		<link rel="stylesheet" href="{{ static_url('vendor/weui/lib/weui.css') }}">
+
 		{% module Template("block/css.html") %}
 
 		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/froala_editor.min.css') }}">
@@ -33,9 +35,6 @@
 			<div id="loader-wrapper">
 				<div id="loader"></div>
 			</div>
-
-
-
 
 			<!--
 			=============================================
@@ -86,66 +85,60 @@
 					<div class="row">
 						<div class="col-lg-9 col-md-8 col-xs-12">
 							<div class="blog-post-data">
-								<div class="image"><img src="{{ static_url('images/blog/10.jpg') }}" alt=""></div>
-								<div class="blog-title">
-									<ul>
-										<li>20 February 2017</li>
-										<li>By Ghost CEO</li>
-										<li>in Consulting</li>
-									</ul>
-									<h3>How to select a small business</h3>
-								</div> <!-- /.blog-title -->
-								<div class="text-wrapper">
-									<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh. Aliquam erat volutpat. Curabitur venenatis massa sed lacus tristique, non auctor nisl sodales. Sed ultricies lacus ut libero faucibus fringilla. Ut nisi tellus, posuere vel mattis nec, convallis a metus. Nullam elementum molestie felis nec lobortis. Cras at justo eu elit semper tempor sed quis orci. In risus magna, malesuada vel elementum ut, finibus et nunc.</p>
-									<p>Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.</p>
-									<div class="bold-text">Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. </div>
-									<ul>
-										<li>Money for your future</li>
-										<li>Do you deserve a vacation?</li>
-										<li>We partner with startups and companies, small and large</li>
-										<li>Launching an attractive and scalable website quickly and affordably is important for modern </li>
-									</ul>
-									<p> Integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. </p>
-								</div> <!-- /text-wrapper -->
-
-								<div class="share-option">
-									<ul class="clearfix page-changer">
-										<li class="float-left"><a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Previous post</a></li>
-										<li class="float-right"><a href="#">Next Post &nbsp; <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
-									</ul>
-									<ul class="social-icon">
-										<li><a href="#" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-									</ul>
+								<!-- uploading toast -->
+								<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+										<div class="weui_mask_transparent"></div>
+										<div class="weui_toast">
+												<div class="weui_loading">
+														<div class="weui_loading_leaf weui_loading_leaf_0"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_1"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_2"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_3"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_4"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_5"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_6"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_7"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_8"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_9"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_10"></div>
+														<div class="weui_loading_leaf weui_loading_leaf_11"></div>
+												</div>
+												<p class="weui_toast_content">图片上传中...</p>
+										</div>
 								</div>
 
-								<div class="author-text">
-									<h4 class="title-inner">About author</h4>
-									<div class="author-data clearfix">
-										<img src="{{ static_url('images/blog/14.jpg') }}" alt="" class="float-left">
-										<div class="text float-left">
-											<h5>MAhfuz Riad</h5>
-											<p>Admin Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia </p>
-										</div>
-									</div>
-								</div> <!-- /.author-text -->
+								<form action="/admin/articles" method="post" id="sky-form" class="sky-form">
+									<div class="blog-title">
+										<ul>
+											<li>文章标题</li>
+											<li><input type="text" name="title" id="title"></li>
+										</ul>
+										<ul>
+											<li>封面图片</li>
+											<li>
+												<div class="form-group">
+													<div class="rst-account-img" style="position:static;">
+														<img id="article_img" name="article_img" src="http://tripc2c-club-title.b0.upaiyun.com/default/bg.jpg" alt="俱乐部背景图" />
+														<input type="hidden" name="article_img" id="i_article_img">
+														<a class="elos-loadbutton" type="button" onclick="openBrowse('file1')">上传封面图</a>
+														<input type="file" id="file1" name="file1" style="display:none;">
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div> <!-- /.blog-title -->
 
-								<div class="reply-comment-section">
-									<h4 class="title-inner">Add your comments</h4>
-									<form action="#">
-										<div class="row">
-											<div class="col-sm-6 col-xs-12 float-right">
-												<input type="text" placeholder="Name">
-												<input type="text" placeholder="Subject">
-												<input type="email" placeholder="Email">
-											</div>
-											<div class="col-sm-6 col-xs-12"><textarea placeholder="Message"></textarea></div>
-										</div> <!-- /.row -->
-										<button class="theme-button-one p-bg-color">Submit Text</button>
-									</form>
-								</div> <!-- /.reply-comment-section -->
+									<div>
+										<label class="label">文章内容</label>
+											<div id='edit'></div>
+											<input type="hidden" name="paragraphs" id="paragraphs">
+									</div>
+
+									<div class="reply-comment-section">
+										<h6 class="title-inner">Add your comments</h6>
+										<button id="destroy2" class="theme-button-one p-bg-color">Submit Text</button>
+									</div> <!-- /.reply-comment-section -->
+								</form>
 							</div> <!-- /.blog-post-data -->
 						</div> <!-- /.col- -->
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 theme-sidebar">
@@ -237,6 +230,208 @@
 			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/video.min.js') }}"></script>
 			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/table.min.js') }}"></script>
 		  <script type="text/javascript" src="{{ static_url('vendor/froala/js/languages/zh_cn.js') }}"></script>
+
+			<!-- fileinput -->
+			<script src="{{ static_url('vendor/upyun/js/fileinput.min.js') }}"></script>
+			<script src="{{ static_url('vendor/upyun/js/spark-md5.min.js') }}"></script>
+			<script src="{{ static_url('vendor/upyun/js/async.js') }}"></script>
+			<script src="{{ static_url('vendor/upyun/js/upyun-mu.js') }}"></script>
+			<script src="{{ static_url('vendor/weui/js/weui.js') }}"></script>
+			<script type="text/javascript">
+				// Menu drop down effect
+				$('.dropdown-toggle').dropdownHover().dropdown();
+				$(document).on('click', '.fhmm .dropdown-menu', function(e) {
+					e.stopPropagation()
+				})
+			</script>
+
+			<input type="file" id="file" name="file" style="display:none;">
+
+			<script>
+		      function openBrowse(id){
+		          var ie=navigator.appName=="Microsoft Internet Explorer" ? true : false;
+		          if(ie){
+		              document.getElementById(id).click();
+		              document.getElementById("filename").value=document.getElementById(id).value;
+		          }else{
+		              var a=document.createEvent("MouseEvents");//FF的处理
+		              a.initEvent("click", true, true);
+		              document.getElementById(id).dispatchEvent(a);
+		          }
+		      };
+
+		  $(function() {
+
+		    $("#file1").on("change",function(){
+
+		        var times = 0;
+		        var imgUrl = uploadUpyun(this.files[0],"file1");
+		        $('#loadingToast').show();
+		        document.addEventListener('uploaded',function(e){
+		          if(times == 0){
+		            $("#article_img").attr('src',imgUrl);
+		            $("#i_article_img").val(imgUrl);
+		            $('#loadingToast').hide();
+		          }
+		          times ++;
+		        });
+		    });
+
+		        var vFroalaEditor;
+		    	  function uuid() {
+		    	    var s = [];
+		    	    var hexDigits = "0123456789abcdef";
+		    	    for (var i = 0; i < 36; i++) {
+		    	      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+		    	    }
+		    	    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+		    	    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+		    	    s[8] = s[13] = s[18] = s[23] = "-";
+
+		    	    var uuid = s.join("");
+		    	    return uuid;
+		    	  }
+
+		    	  function uploadUpyun(file, elementId) {
+		    	    var ext = '.' + file.name.split('.').pop();
+
+		    	    var config = {
+		    	      // 空间名称
+		    	      bucket: 'tripc2c-club-title',
+		    	      // 上传请求过期时间
+		    	      expiration: parseInt((new Date().getTime() + 3600000) / 1000),
+		    	      // 尽量不要使用直接传表单 API 的方式，以防泄露造成安全隐患
+		    	      form_api_secret: 'CRKAOsKHGbbCnU+yztBxUT0bYR0='
+		    	    };
+
+		    	    var instance = new Sand(config);
+		    	    var options = {
+		    	      'notify_url': 'http://upyun.com'
+		    	    };
+		    	    instance.setOptions(options);
+		    	    instance.setElementId(elementId);
+
+		    	    var d = new Date();
+		    	    var month = d.getMonth() + 1;
+		    	    var filename = '/avatar/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid() + ext;
+		    	    console.log(filename);
+		    	    instance.upload(filename);
+
+		    	    return 'https://tripc2c-club-title.b0.upaiyun.com' + filename;
+		    	  };
+
+		    	  $("#file").on("change",function(){
+		    	      var times = 0;
+		    	      var imgUrl = uploadUpyun(this.files[0],"file");
+		    	      $('#loadingToast').show();
+		    	      document.addEventListener('uploaded',function(e){
+		    	        if(times == 0){
+		    						var html = '<img src="'+ imgUrl +'" alt="" />';
+		    						vFroalaEditor.insert(html);
+		    	          $('#loadingToast').hide();
+		    	        }
+		    	        times ++;
+		    	      });
+
+		    	  });
+
+				 $.FroalaEditor.PLUGINS.customPlugin = function (editor) {
+
+					 function openBrowse () {
+						 var ie=navigator.appName=="Microsoft Internet Explorer" ? true : false;
+		         if(ie){
+		             document.getElementById("file").click();
+		             document.getElementById("filename").value=document.getElementById("file").value;
+		         }else{
+		             var a=document.createEvent("MouseEvents");//FF的处理
+		             a.initEvent("click", true, true);
+		             document.getElementById("file").dispatchEvent(a);
+		         }
+					 };
+		 		    // Methods visible outside the plugin.
+		 		    return {
+		 		      openBrowse: openBrowse
+		 		    }
+
+				 };
+
+					$.FroalaEditor.DefineIcon('insert', {
+						NAME: 'plus'
+					});
+					$.FroalaEditor.RegisterCommand('insert', {
+						title: 'Insert Code',
+						focus: true,
+						undo: true,
+						refreshAfterCallback: true,
+						callback: function() {
+							var html = '<pre class="brush: js; ruler: true; first-line: 1; highlight: [1, 3, 5]">Insert your code here</pre>';
+							console.log(this == $.FroalaEditor.RegisterCommand);
+							this.html.insert(html);
+						}
+					});
+
+					$.FroalaEditor.DefineIcon('imageInfo', {NAME: 'image'});
+		      $.FroalaEditor.RegisterCommand('imageInfo', {
+		        title: '插入图片',
+		        focus: false,
+		        undo: false,
+		        refreshAfterCallback: false,
+		        callback: function () {
+							vFroalaEditor = this.html;
+							this.customPlugin.openBrowse();
+		        }
+		      });
+
+					$('#edit').froalaEditor(
+						{
+							enter: $.FroalaEditor.ENTER_DIV,
+		          heightMin:500,
+							heightMax: 500,
+		          language: 'zh_cn',
+							toolbarButtons: ['fontFamily', 'bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'subscript', 'superscript',
+								'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
+								'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
+								'|', 'insertLink', 'insertTable', 'insertHR',
+								'|', 'undo', 'redo', 'clearFormatting', 'html',
+								'|', 'insert','imageInfo'
+							],
+							toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize',
+								'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
+								'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
+								'|', 'insertLink', 'insertHR',
+								'|', 'undo', 'redo', 'html',
+								'|', 'insert','imageInfo'
+							],
+							toolbarButtonsSM: ['bold', 'italic', 'underline', 'fontFamily', 'fontSize',
+								'|', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL',
+								'|', 'insertLink',
+								'|', 'undo', 'redo', 'html',
+								'|', 'insert','imageInfo'
+							],
+							toolbarButtonsXS: ['bold', 'fontSize',
+								'|', 'align', 'formatOL', 'formatUL',
+								'|', 'insert','imageInfo'
+							],
+						}
+					);
+					$('#init2').on('click', function(e) {
+		        e.preventDefault();
+						console.log("Initializing Froala Editor...");
+						$('#edit').removeClass('fr-view').froalaEditor();
+					});
+					$('#destroy2').on('click', function(e) {
+		        e.preventDefault();
+						var html = $('#edit').froalaEditor('html.get');
+		        $("#paragraphs").val(html);
+						console.log(html);
+							$("#sky-form").submit();
+
+						console.log("Destroying Froala Editor...");
+						$('#edit').froalaEditor('destroy');
+						$('#edit').addClass('fr-view');
+					});
+				});
+			</script>
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>
