@@ -41,7 +41,10 @@ def map():
 
         (r'/admin/blog-grid', getattr(admin, 'AdminBlogGridHandle')),
         (r'/admin/blog-create', getattr(admin, 'AdminBlogCreateHandle')),
-        (r'/admin/articles', getattr(admin, 'AdminArticlesXHR')),
+        (r'/admin/blog-modify/([a-z0-9]+)', getattr(admin, 'AdminBlogModifyHandle')),
+        (r'/admin/blog-details/([a-z0-9]+)', getattr(admin, 'AdminBlogDetailsHandle')),
+        (r'/admin/article-create', getattr(admin, 'AdminCreateXHR')),
+        (r'/admin/article-modify', getattr(admin, 'AdminModifyXHR')),
 
         (r'/', getattr(web, 'WebIndexHandle')),
         (r'/website/index', getattr(web, 'WebIndexHandle')),

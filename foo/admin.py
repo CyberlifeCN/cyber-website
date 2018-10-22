@@ -46,7 +46,23 @@ class AdminBlogCreateHandle(tornado.web.RequestHandler):
         self.render('admin/blog-create.html')
 
 
-class AdminArticlesXHR(tornado.web.RequestHandler):
+class AdminBlogModifyHandle(tornado.web.RequestHandler):
+    def get(self, article_id):
+        logging.info("GET %r", self.request.uri)
+        data = symbol_dao.symbol_dao().find(article_id)
+        logging.info("GET article=%r", data)
+        self.render('admin/blog-modify.html', article_id=article_id, article=data["symbol"])
+
+
+class AdminBlogDetailsHandle(tornado.web.RequestHandler):
+    def get(self, article_id):
+        logging.info("GET %r", self.request.uri)
+        data = symbol_dao.symbol_dao().find(article_id)
+        logging.info("GET article=%r", data)
+        self.render('admin/blog-details.html', article_id=article_id, article=data["symbol"])
+
+
+class AdminCreateXHR(tornado.web.RequestHandler):
     @tornado.gen.coroutine
     def post(self):
         logging.info("POST %r", self.request.uri)
@@ -70,13 +86,30 @@ class AdminArticlesXHR(tornado.web.RequestHandler):
         self.redirect("/admin/blog-grid")
 
 
+class AdminModifyXHR(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
+    def post(self):
+        logging.info("POST %r", self.request.uri)
+
+        article_id = self.get_argument("article_id", "")
+        logging.info("got article_id %r", article_id)
+        title = self.get_argument("title", "")
+        logging.info("got title %r", title)
+        article_img = self.get_argument("article_img", "")
+        logging.info("got article_img %r", article_img)
+        paragraphs = self.get_argument("paragraphs", "")
+        logging.info("got paragraphs %r", paragraphs)
+
+        symbol = {"symbol":{"title":title, "img":article_img, "paragraphs":paragraphs}}
+        symbol["_id"] = article_id
+        symbol["mtime"] = current_timestamp()
+        symbol_dao.symbol_dao().insert(article_id, symbol)
+        logging.info("Success[200]: modify symbol=[%r]", symbol)
+
+        self.redirect("/admin/blog-details/" + article_id)
+
+
 class AdminBlogListHandle(tornado.web.RequestHandler):
     def get(self):
         logging.info("GET %r", self.request.uri)
         self.render('admin/blog-list.html')
-
-
-class AdminBlogDetailsHandle(tornado.web.RequestHandler):
-    def get(self):
-        logging.info("GET %r", self.request.uri)
-        self.render('admin/blog-details.html')
