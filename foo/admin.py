@@ -34,6 +34,42 @@ from tornado.httpclient import HTTPClient
 from tornado.httputil import url_concat
 
 
+class AdminIndexHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/index.html')
+
+
+class AdminIndex2Handle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/index-2.html')
+
+
+class AdminContactHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/contact.html')
+
+
+class AdminAboutUsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/about-us.html')
+
+
+class AdminTeamHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/team.html')
+
+
+class AdminFaqHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/faq.html')
+
+
 class AdminBlogGridHandle(tornado.web.RequestHandler):
     def get(self):
         logging.info("GET %r", self.request.uri)
@@ -113,3 +149,45 @@ class AdminBlogListHandle(tornado.web.RequestHandler):
     def get(self):
         logging.info("GET %r", self.request.uri)
         self.render('admin/blog-list.html')
+
+
+class AdminProjectHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/project.html')
+
+
+class AdminProjectDetailsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/project-details.html')
+
+
+class AdminServiceHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/service.html')
+
+
+class AdminServiceDetailsHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/service-details.html')
+
+
+class AdminShopHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/shop.html')
+
+
+class AdminShopSingleHandle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/shop-single.html')
+
+
+class Admin404Handle(tornado.web.RequestHandler):
+    def get(self):
+        logging.info("GET %r", self.request.uri)
+        self.render('admin/404.html')

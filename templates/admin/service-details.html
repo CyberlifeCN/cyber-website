@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!-- For IE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- For Resposive Device -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>inobiz -  Business & Agency Template</title>
+
+		{% module Template("admin/block/css.html") %}
+
+	</head>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+
+
+
+			<!--
+			=============================================
+				Theme Header
+			==============================================
+			-->
+			<header class="theme-menu-wrapper">
+				<div class="container">
+
+					<div class="header-wrapper clearfix">
+
+						{% module Template("admin/block/menu-banner.html") %}
+
+					</div> <!-- /.header-wrapper -->
+				</div> <!-- /.container -->
+			</header> <!-- /.theme-menu-wrapper -->
+
+
+			<!--
+			=============================================
+				Theme Inner Banner
+			==============================================
+			-->
+			<div class="theme-inner-banner">
+				<div class="opacity">
+					<div class="container">
+						<p>Inpire Your Business, Make your business more productive, deliver lightning fast and more</p>
+						<h2>Business Details</h2>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li>.</li>
+							<li><a href="#">Page</a></li>
+							<li>.</li>
+							<li>Services details</li>
+						</ul>
+					</div> <!-- /.container -->
+				</div> <!-- /.opacity -->
+			</div> <!-- /.theme-inner-banner -->
+
+
+			<!--
+			=============================================
+				Service Details
+			==============================================
+			-->
+			<div class="service-details section-margin-bottom">
+				<div class="container">
+					<div class="wrapper clearfix">
+						<h2>Startup Consultation</h2>
+						<h3>What’s the profit?</h3>
+						<div class="row">
+							<div class="col-md-8 col-xs-12 right-content">
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodt temp to the incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis a nostr a exercitation Launching an attractive and scalable website quickly and affordably is important for modern startups — Stack offers massive value without looking 'bargain-bin</p>
+
+								<div class="row">
+									<div class="col-sm-6 col-xs-12">
+										<div class="single-list-content">
+											<i class="flaticon-pie-chart"></i>
+											<h4>Our Vision</h4>
+											<p>Create any type of page quickly Or build your own with Visual Composer single components and exclusive Little Neko addon. You can easily combine any blocks and component. </p>
+										</div> <!-- /.single-list-content -->
+									</div>
+									<div class="col-sm-6 col-xs-12">
+										<div class="single-list-content">
+											<i class="flaticon-3d-cube"></i>
+											<h4>Our support</h4>
+											<p>Create any type of page quickly Or build your own with Visual Composer single components and exclusive Little Neko addon. You can easily combine any blocks and component. </p>
+										</div> <!-- /.single-list-content -->
+									</div>
+								</div> <!-- /.row -->
+								<div class="image"><img src="{{ static_url('images/service/11.jpg') }}" alt=""></div>
+								<p class="f1">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodt temp to the incididunt ut labore et dolore magna aliqua Ut enim ad minim veniam quis a nostr a exercitation </p>
+								<p class="f2">- Launching an attractive and scalable website quickly and affordably is important for modern startups Stack offers massive value without looking 'bargain-bin</p>
+							</div> <!-- /.col- -->
+
+							<div class="col-md-4 col-xs-12">
+								<div class="left-content">
+									<img src="images/service/10.jpg" alt="">
+									<div class="text-center">
+										<h4><span>1.</span>Business Consultaion</h4>
+										<p>Create any type of page quickly Neko  Or build your own with Visual Composer single components and exclusive Little Neko addon. You can easily combine any blocks and component. </p>
+									</div>
+									<div class="text-center">
+										<h4><span>2.</span>Business Concept</h4>
+										<p>Create any type of page quickly Neko  Or build your own with Visual Composer single components and exclusive Little Neko addon. You can easily combine any blocks and component. </p>
+									</div>
+								</div> <!-- /.left-content -->
+							</div>
+						</div> <!-- /.row -->
+					</div> <!-- /.wrapper -->
+
+					<ul class="clearfix page-changer">
+						<li class="float-left"><a href="#"><i class="flaticon-long-left-arrow"></i> &nbsp; Back to Services</a></li>
+						<li class="float-right"><a href="#">Next Service &nbsp; <i class="flaticon-long-right-arrow"></i></a></li>
+					</ul>
+				</div> <!-- /.container -->
+			</div> <!-- /.service-details -->
+
+
+
+
+			<!--
+			=============================================
+				Bottom Banner
+			==============================================
+			-->
+			{% module Template("admin/block/contact-banner.html") %}
+
+
+			<!--
+			=============================================
+				Footer
+			==============================================
+			-->
+			{% module Template("admin/block/footer.html") %}
+
+
+		<!-- Js File_________________________________ -->
+		{% module Template("admin/block/js.html") %}
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

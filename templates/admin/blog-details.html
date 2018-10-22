@@ -10,7 +10,7 @@
 
 		<title>inobiz -  Business & Agency Template</title>
 
-		{% module Template("block/css.html") %}
+		{% module Template("admin/block/css.html") %}
 
 	</head>
 
@@ -37,7 +37,7 @@
 
 					<div class="header-wrapper clearfix">
 
-						{% module Template("block/menu-banner.html") %}
+						{% module Template("admin/block/menu-banner.html") %}
 
 					</div> <!-- /.header-wrapper -->
 				</div> <!-- /.container -->
@@ -75,7 +75,7 @@
 			  <div class="container">
 			    <div class="row">
 			      <div class="col-md-9 col-sm-8 col-xs-12">
-			        <h3>If you want to create new Article… Just touch on this button</h3>
+			        <h3>If you want to modify this Article… Just touch on this button</h3>
 			      </div>
 			      <div class="col-md-3 col-sm-4 col-xs-12">
 			        <a href="/admin/blog-modify/{{ article_id }}" class="theme-button-one float-right">Modify Article</a>
@@ -205,7 +205,7 @@
 				Bottom Banner
 			==============================================
 			-->
-			{% module Template("block/contact-banner.html") %}
+			{% module Template("admin/block/contact-banner.html") %}
 
 
 			<!--
@@ -213,11 +213,11 @@
 				Footer
 			==============================================
 			-->
-			{% module Template("block/footer.html") %}
+			{% module Template("admin/block/footer.html") %}
 
 
 		<!-- Js File_________________________________ -->
-		{% module Template("block/js.html") %}
+		{% module Template("admin/block/js.html") %}
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>
