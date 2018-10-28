@@ -308,11 +308,11 @@
 
 					var config = {
 						// 空间名称
-						bucket: 'tripc2c-club-title',
+						bucket: 'cyberlife',
 						// 上传请求过期时间
 						expiration: parseInt((new Date().getTime() + 3600000) / 1000),
 						// 尽量不要使用直接传表单 API 的方式，以防泄露造成安全隐患
-						form_api_secret: 'CRKAOsKHGbbCnU+yztBxUT0bYR0='
+						form_api_secret: 'HZbBSjG/0abriWZ2ZQi6lznEyQM='
 					};
 
 					var instance = new Sand(config);
@@ -324,11 +324,11 @@
 
 					var d = new Date();
 					var month = d.getMonth() + 1;
-					var filename = '/avatar/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid() + ext;
+					var filename = '/articles/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid() + ext;
 					console.log(filename);
 					instance.upload(filename);
 
-					return 'https://tripc2c-club-title.b0.upaiyun.com' + filename;
+					return 'http://image.cyber-life.cn' + filename;
 				};
 
 				$("#file").on("change", function () {
