@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!-- For IE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- For Resposive Device -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>inobiz -  Business & Agency Template</title>
+
+		{% module Template("admin/block/css.html") %}
+
+	</head>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+
+
+
+			<!--
+			=============================================
+				Theme Header
+			==============================================
+			-->
+			<header class="theme-menu-wrapper">
+				<div class="container">
+
+					<div class="header-wrapper clearfix">
+
+						{% module Template("admin/block/menu-banner.html") %}
+
+					</div> <!-- /.header-wrapper -->
+				</div> <!-- /.container -->
+			</header> <!-- /.theme-menu-wrapper -->
+
+
+			<!--
+			=============================================
+				Theme Inner Banner
+			==============================================
+			-->
+			<div class="theme-inner-banner">
+				<div class="opacity">
+					<div class="container">
+						<p>Inpire Your Business, Our talent team member of business agency </p>
+						<h2>Our Blog</h2>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li>.</li>
+							<li><a href="#">Page</a></li>
+							<li>.</li>
+							<li>Blog</li>
+						</ul>
+					</div> <!-- /.container -->
+				</div> <!-- /.opacity -->
+			</div> <!-- /.theme-inner-banner -->
+
+
+			<!--
+			=============================================
+				Our Blog
+			==============================================
+			-->
+			<div class="our-blog section-margin-bottom-two blog-list">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-9 col-md-8 col-xs-12">
+							<div id="articleRows">
+							</div>
+							<div class="load-more-button text-center"><a href="#" class="theme-button-one">See More News</a></div>
+						</div> <!-- /.col- -->
+
+						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 theme-sidebar">
+							<form action="#" class="sidebar-search widget-margin">
+								<input type="text" placeholder="Search">
+								<button><i class="fa fa-search" aria-hidden="true"></i></button>
+							</form>
+							<div class="sidebar-categories widget-margin">
+								<h4>Categories</h4>
+								<ul>
+									{% for category in categories %}
+										<li><a href="/admin/blog-list?category_id={{ category["_id"] }}">{{ category["name"] }} <span>( 12 )</span></a></li>
+									{% end %}
+								</ul>
+							</div> <!-- /.sidebar-categories -->
+
+							<div class="sidebar-recent-post widget-margin">
+								<h4>Recent Posts</h4>
+								<ul>
+									<li><a href="#">Hilfiger Show This watermelon I bought on a whim is pretty good</a></li>
+									<li><a href="#">The hand rail is going a little faster than the moving</a></li>
+									<li><a href="#">Hilfiger Show This watermelon I bought on a whim </a></li>
+								</ul>
+							</div> <!-- /.sidebar-recent-post -->
+
+							<div class="sidebar-categories widget-margin">
+								<h4>Archives</h4>
+								<ul>
+									<li><a href="#">January 2017 <span>( 12 )</span></a></li>
+									<li><a href="#">February 2017 <span>( 10 )</span></a></li>
+								</ul>
+							</div> <!-- /.sidebar-categories -->
+
+							<div class="sidebar-partner-slider">
+								<div class="item">
+									<img src="{{ static_url('images/home/4.jpg') }}" alt="">
+									<h6>Joan Riad</h6>
+									<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore eu feugiat nulla</p>
+								</div>
+								<div class="item">
+									<img src="{{ static_url('images/home/5.jpg') }}" alt="">
+									<h6>Joan Munna</h6>
+									<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore eu feugiat nulla</p>
+								</div>
+							</div> <!-- /.sidebar-partner-slider -->
+						</div> <!-- /.theme-sidebar -->
+					</div> <!-- /.row -->
+				</div> <!-- /.container -->
+			</div> <!-- /.our-blog -->
+
+
+
+			<!--
+			=============================================
+				Bottom Banner
+			==============================================
+			-->
+			{% module Template("admin/block/contact-banner.html") %}
+
+
+			<!--
+			=============================================
+				Footer
+			==============================================
+			-->
+			{% module Template("admin/block/footer.html") %}
+
+
+		<!-- Js File_________________________________ -->
+		{% module Template("admin/block/js.html") %}
+
+		<script>
+			function getLocalTime(nS) { //时间戳转换
+				 var  d = new Date(parseInt(nS) * 1000);
+				 var year = d.getFullYear();
+				 var month = d.getMonth()+1;
+				 var day = d.getDate();
+				 var date_info = {"year":year+'年',"month":month+'月',"day":day+'日'};
+				 return date_info;
+			};
+
+			var limit = 5;//每页显示数
+			var currentPage = 0;//当前页
+			var total_page = 0;//总页数
+			function query(pageNum) {
+				$.ajax({
+					type:"GET",
+					url:"/website/api/categories/{{ category_id }}/articles?page=1&limit="+limit+"",
+          contentType: 'application/json',
+					success:function(data){
+								console.log(data);
+								data_obj = JSON.parse(data);
+								data = data_obj.rs;
+								currentPage = 1;
+						var pageData = data.data;
+								total_page = data.total_page;//总页
+						// num = ajaxobj.length;
+						for (var i in pageData) {
+							var inner_html = '<div class="single-blog">';
+							inner_html += '  <div class="image"><img src="'+pageData[i].symbol.img+'!870x395" alt=""></div>';
+							inner_html += '	 <div class="text">';
+							inner_html += '		 <div class="space-fix">';
+							inner_html += '			 <div class="date">'+getLocalTime(pageData[i].ctime).year+getLocalTime(pageData[i].ctime).month+getLocalTime(pageData[i].ctime).day+'</div>';
+							inner_html += '			 <a href="#" class="author">'+pageData[i].symbol.title+'</a>';
+							inner_html += '			 <p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>';
+							inner_html += '		 </div>';
+							inner_html += '	   <a href="'+'/admin/blog-details/'+pageData[i]._id+'" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+							inner_html += '  </div>';
+							inner_html += '</div>';
+
+							$('#articleRows').append(inner_html);
+							// member_num += 1;
+						};
+					if(total_page>5){
+							for (var k=1;k<=5;k++){
+								var inner_html = '<a class="navlinks" style="cursor:pointer;margin-left:5px;" id="num'+k+'">'+ k +'</a>';
+								$(".pageBox").append(inner_html);
+							};
+						}else if(total_page<=5){
+							for (var k=1;k<=total_page;k++){
+								var inner_html = '<a class="navlinks"  style="cursor:pointer;margin-left:5px;" id="num'+k+'">'+ k +'</a>';
+								$(".pageBox").append(inner_html);
+							};
+						}
+						$("#num1").addClass("current");
+					}
+				});
+			};
+
+			function gotoPage(pageNum) {
+				$.ajax({
+					type:"GET",
+					url:"/website/api/categories/{{ category_id }}/articles?page="+pageNum+"&limit="+limit+"",
+					contentType: 'application/json',
+					success:function(data){
+								//  console.log(data);
+								data_obj = JSON.parse(data);
+								data = data_obj.rs;
+								currentPage = pageNum;
+						var pageData = data.data;
+								total_page = data.total_page;//总页
+						$('#articleBox').html("");
+
+						for (var i in pageData) {
+							var inner_html = '<div class="single-blog">';
+							inner_html += '  <div class="image"><img src="'+pageData[i].symbol.img+'!870x395" alt=""></div>';
+							inner_html += '	 <div class="text">';
+							inner_html += '		 <div class="space-fix">';
+							inner_html += '			 <div class="date">'+getLocalTime(pageData[i].ctime).year+getLocalTime(pageData[i].ctime).month+getLocalTime(pageData[i].ctime).day+'</div>';
+							inner_html += '			 <a href="#" class="author">'+pageData[i].symbol.title+'</a>';
+							inner_html += '			 <p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>';
+							inner_html += '		 </div>';
+							inner_html += '	   <a href="'+'/admin/blog-details/'+pageData[i]._id+'" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+							inner_html += '  </div>';
+							inner_html += '</div>';
+
+							$('#articleRows').append(inner_html);
+							// member_num += 1;
+						};
+
+						pageNext = parseInt((currentPage-1)/5) + 1;
+
+						start = (pageNext-1)*5+1;
+						end = pageNext*5;
+						if(end > total_page){
+							end = total_page;
+						}
+
+						$(".pageBox").html("");
+						for (var k=start;k<=end;k++){
+							var inner_html = '<a class="navlinks" style="cursor:pointer;margin-left:5px;" id="num'+k+'">'+ k +'</a>';
+
+							$(".pageBox").append(inner_html);
+						};
+						 $("#num"+currentPage).addClass("current").siblings().removeClass("current");
+						}
+				});
+			};
+
+			$(function(){
+				query(1);
+				$("#next").on("click",function(){
+						if(currentPage>=total_page){
+
+						}else{
+								gotoPage(++currentPage);
+								// $("#num"+currentPage).addClass("current").siblings().removeClass("current");
+						}
+				})
+			});
+		</script>
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

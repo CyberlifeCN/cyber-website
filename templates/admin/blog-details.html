@@ -156,11 +156,9 @@
 							<div class="sidebar-categories widget-margin">
 								<h4>Categories</h4>
 								<ul>
-									<li><a href="#">Business <span>( 12 )</span></a></li>
-									<li><a href="#">Accounting <span>( 10 )</span></a></li>
-									<li><a href="#">Consulting <span>( 09 )</span></a></li>
-									<li><a href="#">Business Partner <span>( 05 )</span></a></li>
-									<li><a href="#">Business Partner <span>( 11 )</span></a></li>
+									{% for category in categories %}
+										<li><a href="/admin/blog-list?category_id={{ category["_id"] }}">{{ category["name"] }} <span>( 12 )</span></a></li>
+									{% end %}
 								</ul>
 							</div> <!-- /.sidebar-categories -->
 

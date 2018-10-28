@@ -79,9 +79,14 @@ class AdminBlogGridHandle(tornado.web.RequestHandler):
 
 
 class AdminBlogCreateHandle(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
     def get(self):
         logging.info("GET %r", self.request.uri)
-        self.render('admin/blog-create.html')
+
+        categories = yield category_dao.category_dao().find_all()
+
+        self.render('admin/blog-create.html',
+            categories=categories)
 
 
 class AdminBlogModifyHandle(tornado.web.RequestHandler):
@@ -105,11 +110,17 @@ class AdminBlogModifyHandle(tornado.web.RequestHandler):
 
 
 class AdminBlogDetailsHandle(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
     def get(self, article_id):
         logging.info("GET %r", self.request.uri)
         data = symbol_dao.symbol_dao().find(article_id)
         logging.info("GET article=%r", data)
-        self.render('admin/blog-details.html', article_id=article_id, article=data["symbol"])
+        categories = yield category_dao.category_dao().find_all()
+
+        self.render('admin/blog-details.html',
+            article_id=article_id,
+            article=data["symbol"],
+            categories=categories)
 
 
 class AdminCreateXHR(tornado.web.RequestHandler):
@@ -123,15 +134,21 @@ class AdminCreateXHR(tornado.web.RequestHandler):
         logging.info("got article_img %r", article_img)
         paragraphs = self.get_argument("paragraphs", "")
         logging.info("got paragraphs %r", paragraphs)
+        categories = self.get_arguments("categories")
+        logging.info("got categories %r", categories)
 
         symbol = {"symbol":{"title":title, "img":article_img, "paragraphs":paragraphs}}
-        symbol_id = generate_uuid_str()
-        symbol["_id"] = symbol_id
+        article_id = generate_uuid_str()
+        symbol["_id"] = article_id
         symbol["ctime"] = current_timestamp()
         symbol["mtime"] = symbol["ctime"]
-        symbol_dao.symbol_dao().insert(symbol_id, symbol)
+        symbol_dao.symbol_dao().insert(article_id, symbol)
         yield article_dao.article_dao().insert(symbol)
         logging.info("Success[200]: create symbol=[%r]", symbol)
+
+        for category_id in categories:
+            yield article_categories_dao.article_categories_dao().insert(article_id, category_id)
+        logging.info("Success[200]: insert article=[%r] categories=[%r]", article_id, categories)
 
         self.redirect("/admin/blog-grid")
 
@@ -172,9 +189,18 @@ class AdminModifyXHR(tornado.web.RequestHandler):
 
 
 class AdminBlogListHandle(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
     def get(self):
         logging.info("GET %r", self.request.uri)
-        self.render('admin/blog-list.html')
+
+        category_id = self.get_argument("category_id", "")
+        logging.info("got category_id %r", category_id)
+
+        categories = yield category_dao.category_dao().find_all()
+
+        self.render('admin/blog-list.html',
+            category_id=category_id,
+            categories=categories)
 
 
 class AdminProjectHandle(tornado.web.RequestHandler):
