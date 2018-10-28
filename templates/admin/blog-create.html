@@ -1,212 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<!-- For IE -->
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<!-- For Resposive Device -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+	<meta charset="UTF-8">
+	<!-- For IE -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<title>inobiz -  Business & Agency Template</title>
+	<!-- For Resposive Device -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<link rel="stylesheet" href="{{ static_url('vendor/weui/lib/weui.css') }}">
+	<title>inobiz - Business & Agency Template</title>
 
-		{% module Template("admin/block/css.html") %}
+	<link rel="stylesheet" href="{{ static_url('vendor/weui/lib/weui.css') }}">
 
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/froala_editor.min.css') }}">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/froala_style.min.css') }}">
-	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/code_view.css') }}">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/image.css') }}">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/video.css') }}">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/table.css') }}">
-		<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/fullscreen.css') }}">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+	{% module Template("admin/block/css.html") %}
 
-	</head>
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/froala_editor.min.css') }}">
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/froala_style.min.css') }}">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/code_view.css') }}">
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/image.css') }}">
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/video.css') }}">
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/table.css') }}">
+	<link rel="stylesheet" href="{{ static_url('vendor/froala/css/plugins/fullscreen.css') }}">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css"> -->
 
-	<body>
-		<div class="main-page-wrapper">
+</head>
 
-			<!-- ===================================================
+
+<style>
+	#destroy2 {
+		margin-top: 30px;
+		color: white;
+	}
+
+	#destroy2:hover {
+		background: rgba(17, 202, 255, 0.7);
+	}
+
+	.blog-title input {
+    	width: 100%;
+    	height: 100%;
+    	border: 1px solid #efefef;
+    	padding: 12px;
+	}
+
+	.title-container {
+		margin-bottom: 20px;
+		width: 100%;
+		display: flex;
+		align-items: center;
+	}
+
+	.title-placeholder {
+		flex-grow: 1;
+	}
+	.face-placeholder {
+		vertical-align: top;
+	}
+	#face-upload-btn {
+		margin-top: 10px;
+		cursor: pointer;
+	}
+
+	#loadingToast {
+		top: 50%;
+	}
+</style>
+
+<body>
+	<div class="main-page-wrapper">
+
+		<!-- ===================================================
 				Loading Transition
 			==================================================== -->
-			<div id="loader-wrapper">
-				<div id="loader"></div>
-			</div>
+		<div id="loader-wrapper">
+			<div id="loader"></div>
+		</div>
 
-			<!--
+		<!--
 			=============================================
 				Theme Header
 			==============================================
 			-->
-			<header class="theme-menu-wrapper">
-				<div class="container">
+		<header class="theme-menu-wrapper">
+			<div class="container">
 
-					<div class="header-wrapper clearfix">
+				<div class="header-wrapper clearfix">
 
-						{% module Template("admin/block/menu-banner.html") %}
+					{% module Template("admin/block/menu-banner.html") %}
 
-					</div> <!-- /.header-wrapper -->
-				</div> <!-- /.container -->
-			</header> <!-- /.theme-menu-wrapper -->
+				</div> <!-- /.header-wrapper -->
+			</div> <!-- /.container -->
+		</header> <!-- /.theme-menu-wrapper -->
 
 
-			<!--
+		<!--
 			=============================================
 				Theme Inner Banner
 			==============================================
 			-->
-			<div class="theme-inner-banner">
-				<div class="opacity">
-					<div class="container">
-						<p>Inpire Your Business, Our talent team member of business agency </p>
-						<h2>Blog Details</h2>
-						<ul>
-							<li><a href="/">Home</a></li>
-							<li>.</li>
-							<li><a href="#">Page</a></li>
-							<li>.</li>
-							<li>Blog Details</li>
-						</ul>
-					</div> <!-- /.container -->
-				</div> <!-- /.opacity -->
-			</div> <!-- /.theme-inner-banner -->
+		<div class="theme-inner-banner">
+			<div class="opacity">
+				<div class="container">
+					<p>Inpire Your Business, Our talent team member of business agency </p>
+					<h2>Blog Details</h2>
+					<ul>
+						<li><a href="/">Home</a></li>
+						<li>.</li>
+						<li><a href="#">Page</a></li>
+						<li>.</li>
+						<li>Blog Details</li>
+					</ul>
+				</div> <!-- /.container -->
+			</div> <!-- /.opacity -->
+		</div> <!-- /.theme-inner-banner -->
 
 
-			<!--
+		<!--
 			=============================================
 				Our Blog
 			==============================================
 			-->
-			<div class="our-blog section-margin-bottom blog-details">
-				<div class="container">
-					<div class="row">
-						<div class="col-lg-9 col-md-8 col-xs-12">
-							<div class="blog-post-data">
-								<!-- uploading toast -->
-								<div id="loadingToast" class="weui_loading_toast" style="display:none;">
-										<div class="weui_mask_transparent"></div>
-										<div class="weui_toast">
-												<div class="weui_loading">
-														<div class="weui_loading_leaf weui_loading_leaf_0"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_1"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_2"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_3"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_4"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_5"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_6"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_7"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_8"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_9"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_10"></div>
-														<div class="weui_loading_leaf weui_loading_leaf_11"></div>
-												</div>
-												<p class="weui_toast_content">图片上传中...</p>
-										</div>
-								</div>
-
-								<form action="/admin/article-create" method="post" id="sky-form" class="sky-form">
-									<div class="blog-title">
-										<ul>
-											<li>文章标题</li>
-											<li><input type="text" name="title" id="title"></li>
-										</ul>
-										<ul>
-											<li>封面图片</li>
-											<li>
-												<div class="form-group">
-													<div class="rst-account-img" style="position:static;">
-														<img id="article_img" name="article_img" src="http://tripc2c-club-title.b0.upaiyun.com/default/bg.jpg" alt="俱乐部背景图" />
-														<input type="hidden" name="article_img" id="i_article_img">
-														<a class="elos-loadbutton" type="button" onclick="openBrowse('file1')">上传封面图</a>
-														<input type="file" id="file1" name="file1" style="display:none;">
-													</div>
-												</div>
-											</li>
-										</ul>
-									</div> <!-- /.blog-title -->
-
-									<div>
-										<label class="label">文章内容</label>
-											<div id='edit'></div>
-											<input type="hidden" name="paragraphs" id="paragraphs">
+		<div class="our-blog section-margin-bottom blog-details">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 col-md-8 col-xs-12">
+						<div class="blog-post-data">
+							<!-- uploading toast -->
+							<div id="loadingToast" class="weui_loading_toast" style="display:none;">
+								<div class="weui_mask_transparent"></div>
+								<div class="weui_toast">
+									<div class="weui_loading">
+										<div class="weui_loading_leaf weui_loading_leaf_0"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_1"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_2"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_3"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_4"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_5"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_6"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_7"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_8"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_9"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_10"></div>
+										<div class="weui_loading_leaf weui_loading_leaf_11"></div>
 									</div>
+									<p class="weui_toast_content">图片上传中...</p>
+								</div>
+							</div>
 
-									<div class="reply-comment-section">
-										<h6 class="title-inner">Add your comments</h6>
-										<button id="destroy2" class="theme-button-one p-bg-color">Submit Text</button>
-									</div> <!-- /.reply-comment-section -->
-								</form>
-							</div> <!-- /.blog-post-data -->
-						</div> <!-- /.col- -->
-						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 theme-sidebar">
-							<form action="#" class="sidebar-search widget-margin">
-								<input type="text" placeholder="Search">
-								<button><i class="fa fa-search" aria-hidden="true"></i></button>
+							<form action="/admin/article-create" method="post" id="sky-form" class="sky-form">
+								<div class="blog-title">
+									<ul class="title-container">
+										<li>文章标题</li>
+										<li class="title-placeholder"><input type="text" name="title" id="title" placeholder="请输入文章标题"></li>
+									</ul>
+									<ul>
+										<li class="face-placeholder">封面图片</li>
+										<li>
+											<div class="form-group">
+												<div class="rst-account-img" style="position:static;">
+													<img id="article_img" name="article_img" src="http://tripc2c-club-title.b0.upaiyun.com/default/bg.jpg" alt="俱乐部背景图" />
+													<input type="hidden" name="article_img" id="i_article_img">
+													<a id="face-upload-btn" class="elos-loadbutton" type="button" onclick="openBrowse('file1')">上传封面图</a>
+													<input type="file" id="file1" name="file1" style="display:none;">
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div> <!-- /.blog-title -->
+
+								<div>
+									<label class="label">文章内容</label>
+									<div id='edit'></div>
+									<input type="hidden" name="paragraphs" id="paragraphs">
+								</div>
+
+								<button id="destroy2" class="theme-button-one p-bg-color">提交文章</button>
+								<!-- /.reply-comment-section -->
 							</form>
-							<div class="sidebar-categories widget-margin">
-								<h4>Categories</h4>
-								<ul>
-									<li><a href="#">Business <span>( 12 )</span></a></li>
-									<li><a href="#">Accounting <span>( 10 )</span></a></li>
-									<li><a href="#">Consulting <span>( 09 )</span></a></li>
-									<li><a href="#">Business Partner <span>( 05 )</span></a></li>
-									<li><a href="#">Business Partner <span>( 11 )</span></a></li>
-								</ul>
-							</div> <!-- /.sidebar-categories -->
+						</div> <!-- /.blog-post-data -->
+					</div> <!-- /.col- -->
+					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 theme-sidebar">
+						<form action="#" class="sidebar-search widget-margin">
+							<input type="text" placeholder="Search">
+							<button><i class="fa fa-search" aria-hidden="true"></i></button>
+						</form>
+						<div class="sidebar-categories widget-margin">
+							<h4>Categories</h4>
+							<ul>
+								<li><a href="#">Business <span>( 12 )</span></a></li>
+								<li><a href="#">Accounting <span>( 10 )</span></a></li>
+								<li><a href="#">Consulting <span>( 09 )</span></a></li>
+								<li><a href="#">Business Partner <span>( 05 )</span></a></li>
+								<li><a href="#">Business Partner <span>( 11 )</span></a></li>
+							</ul>
+						</div> <!-- /.sidebar-categories -->
 
-							<div class="sidebar-recent-post widget-margin">
-								<h4>Recent Posts</h4>
-								<ul>
-									<li><a href="#">Hilfiger Show This watermelon I bought on a whim is pretty good</a></li>
-									<li><a href="#">The hand rail is going a little faster than the moving</a></li>
-									<li><a href="#">Hilfiger Show This watermelon I bought on a whim </a></li>
-								</ul>
-							</div> <!-- /.sidebar-recent-post -->
+						<div class="sidebar-recent-post widget-margin">
+							<h4>Recent Posts</h4>
+							<ul>
+								<li><a href="#">Hilfiger Show This watermelon I bought on a whim is pretty good</a></li>
+								<li><a href="#">The hand rail is going a little faster than the moving</a></li>
+								<li><a href="#">Hilfiger Show This watermelon I bought on a whim </a></li>
+							</ul>
+						</div> <!-- /.sidebar-recent-post -->
 
-							<div class="sidebar-categories widget-margin">
-								<h4>Archives</h4>
-								<ul>
-									<li><a href="#">January 2017 <span>( 12 )</span></a></li>
-									<li><a href="#">February 2017 <span>( 10 )</span></a></li>
-								</ul>
-							</div> <!-- /.sidebar-categories -->
+						<div class="sidebar-categories widget-margin">
+							<h4>Archives</h4>
+							<ul>
+								<li><a href="#">January 2017 <span>( 12 )</span></a></li>
+								<li><a href="#">February 2017 <span>( 10 )</span></a></li>
+							</ul>
+						</div> <!-- /.sidebar-categories -->
 
-							<div class="sidebar-partner-slider">
-								<div class="item">
-									<img src="{{ static_url('images/home/4.jpg') }}" alt="">
-									<h6>Joan Riad</h6>
-									<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore eu feugiat nulla</p>
-								</div>
-								<div class="item">
-									<img src="{{ static_url('images/home/5.jpg') }}" alt="">
-									<h6>Joan Munna</h6>
-									<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore eu feugiat nulla</p>
-								</div>
-							</div> <!-- /.sidebar-partner-slider -->
-						</div> <!-- /.theme-sidebar -->
-					</div> <!-- /.row -->
-				</div> <!-- /.container -->
-			</div> <!-- /.our-blog -->
+						<div class="sidebar-partner-slider">
+							<div class="item">
+								<img src="{{ static_url('images/home/4.jpg') }}" alt="">
+								<h6>Joan Riad</h6>
+								<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore
+									eu feugiat nulla</p>
+							</div>
+							<div class="item">
+								<img src="{{ static_url('images/home/5.jpg') }}" alt="">
+								<h6>Joan Munna</h6>
+								<p>Duis autem vel eum iriure dolor in hendrerit in vulput ate velit esse molestie consequat, vel illum dolore
+									eu feugiat nulla</p>
+							</div>
+						</div> <!-- /.sidebar-partner-slider -->
+					</div> <!-- /.theme-sidebar -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.our-blog -->
 
 
 
-			<!--
+		<!--
 			=============================================
 				Bottom Banner
 			==============================================
 			-->
-			{% module Template("admin/block/contact-banner.html") %}
+		{% module Template("admin/block/contact-banner.html") %}
 
 
-			<!--
+		<!--
 			=============================================
 				Footer
 			==============================================
 			-->
-			{% module Template("admin/block/footer.html") %}
+		{% module Template("admin/block/footer.html") %}
 
 
 		<!-- Js File_________________________________ -->
@@ -215,224 +257,225 @@
 		<!--
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
 			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script> -->
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/froala_editor.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/code_beautifier.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/code_view.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/draggable.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/font_size.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/fullscreen.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/align.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/font_family.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/paragraph_style.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/lists.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/image.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/link.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/video.min.js') }}"></script>
-			<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/table.min.js') }}"></script>
-		  <script type="text/javascript" src="{{ static_url('vendor/froala/js/languages/zh_cn.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/froala_editor.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/code_beautifier.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/code_view.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/draggable.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/font_size.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/fullscreen.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/align.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/font_family.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/paragraph_style.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/lists.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/image.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/link.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/video.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/plugins/table.min.js') }}"></script>
+		<script type="text/javascript" src="{{ static_url('vendor/froala/js/languages/zh_cn.js') }}"></script>
 
-			<!-- fileinput -->
-			<script src="{{ static_url('vendor/upyun/js/fileinput.min.js') }}"></script>
-			<script src="{{ static_url('vendor/upyun/js/spark-md5.min.js') }}"></script>
-			<script src="{{ static_url('vendor/upyun/js/async.js') }}"></script>
-			<script src="{{ static_url('vendor/upyun/js/upyun-mu.js') }}"></script>
-			<script src="{{ static_url('vendor/weui/js/weui.js') }}"></script>
-			<script type="text/javascript">
-				// Menu drop down effect
-				$('.dropdown-toggle').dropdownHover().dropdown();
-				$(document).on('click', '.fhmm .dropdown-menu', function(e) {
-					e.stopPropagation()
-				})
-			</script>
+		<!-- fileinput -->
+		<script src="{{ static_url('vendor/upyun/js/fileinput.min.js') }}"></script>
+		<script src="{{ static_url('vendor/upyun/js/spark-md5.min.js') }}"></script>
+		<script src="{{ static_url('vendor/upyun/js/async.js') }}"></script>
+		<script src="{{ static_url('vendor/upyun/js/upyun-mu.js') }}"></script>
+		<script src="{{ static_url('vendor/weui/js/weui.js') }}"></script>
+		<script type="text/javascript">
+			// Menu drop down effect
+			$('.dropdown-toggle').dropdownHover().dropdown();
+			$(document).on('click', '.fhmm .dropdown-menu', function (e) {
+				e.stopPropagation()
+			})
+		</script>
 
-			<input type="file" id="file" name="file" style="display:none;">
+		<input type="file" id="file" name="file" style="display:none;">
 
-			<script>
-		      function openBrowse(id){
-		          var ie=navigator.appName=="Microsoft Internet Explorer" ? true : false;
-		          if(ie){
-		              document.getElementById(id).click();
-		              document.getElementById("filename").value=document.getElementById(id).value;
-		          }else{
-		              var a=document.createEvent("MouseEvents");//FF的处理
-		              a.initEvent("click", true, true);
-		              document.getElementById(id).dispatchEvent(a);
-		          }
-		      };
+		<script>
+			function openBrowse(id) {
+				var ie = navigator.appName == "Microsoft Internet Explorer" ? true : false;
+				if (ie) {
+					document.getElementById(id).click();
+					document.getElementById("filename").value = document.getElementById(id).value;
+				} else {
+					var a = document.createEvent("MouseEvents");//FF的处理
+					a.initEvent("click", true, true);
+					document.getElementById(id).dispatchEvent(a);
+				}
+			};
 
-		  $(function() {
+			$(function () {
 
-		    $("#file1").on("change",function(){
+				$("#file1").on("change", function () {
 
-		        var times = 0;
-		        var imgUrl = uploadUpyun(this.files[0],"file1");
-		        $('#loadingToast').show();
-		        document.addEventListener('uploaded',function(e){
-		          if(times == 0){
-		            $("#article_img").attr('src',imgUrl);
-		            $("#i_article_img").val(imgUrl);
-		            $('#loadingToast').hide();
-		          }
-		          times ++;
-		        });
-		    });
-
-		        var vFroalaEditor;
-		    	  function uuid() {
-		    	    var s = [];
-		    	    var hexDigits = "0123456789abcdef";
-		    	    for (var i = 0; i < 36; i++) {
-		    	      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
-		    	    }
-		    	    s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
-		    	    s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
-		    	    s[8] = s[13] = s[18] = s[23] = "-";
-
-		    	    var uuid = s.join("");
-		    	    return uuid;
-		    	  }
-
-		    	  function uploadUpyun(file, elementId) {
-		    	    var ext = '.' + file.name.split('.').pop();
-
-		    	    var config = {
-		    	      // 空间名称
-		    	      bucket: 'tripc2c-club-title',
-		    	      // 上传请求过期时间
-		    	      expiration: parseInt((new Date().getTime() + 3600000) / 1000),
-		    	      // 尽量不要使用直接传表单 API 的方式，以防泄露造成安全隐患
-		    	      form_api_secret: 'CRKAOsKHGbbCnU+yztBxUT0bYR0='
-		    	    };
-
-		    	    var instance = new Sand(config);
-		    	    var options = {
-		    	      'notify_url': 'http://upyun.com'
-		    	    };
-		    	    instance.setOptions(options);
-		    	    instance.setElementId(elementId);
-
-		    	    var d = new Date();
-		    	    var month = d.getMonth() + 1;
-		    	    var filename = '/avatar/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid() + ext;
-		    	    console.log(filename);
-		    	    instance.upload(filename);
-
-		    	    return 'https://tripc2c-club-title.b0.upaiyun.com' + filename;
-		    	  };
-
-		    	  $("#file").on("change",function(){
-		    	      var times = 0;
-		    	      var imgUrl = uploadUpyun(this.files[0],"file");
-		    	      $('#loadingToast').show();
-		    	      document.addEventListener('uploaded',function(e){
-		    	        if(times == 0){
-		    						var html = '<img src="'+ imgUrl +'" alt="" />';
-		    						vFroalaEditor.insert(html);
-		    	          $('#loadingToast').hide();
-		    	        }
-		    	        times ++;
-		    	      });
-
-		    	  });
-
-				 $.FroalaEditor.PLUGINS.customPlugin = function (editor) {
-
-					 function openBrowse () {
-						 var ie=navigator.appName=="Microsoft Internet Explorer" ? true : false;
-		         if(ie){
-		             document.getElementById("file").click();
-		             document.getElementById("filename").value=document.getElementById("file").value;
-		         }else{
-		             var a=document.createEvent("MouseEvents");//FF的处理
-		             a.initEvent("click", true, true);
-		             document.getElementById("file").dispatchEvent(a);
-		         }
-					 };
-		 		    // Methods visible outside the plugin.
-		 		    return {
-		 		      openBrowse: openBrowse
-		 		    }
-
-				 };
-
-					$.FroalaEditor.DefineIcon('insert', {
-						NAME: 'plus'
-					});
-					$.FroalaEditor.RegisterCommand('insert', {
-						title: 'Insert Code',
-						focus: true,
-						undo: true,
-						refreshAfterCallback: true,
-						callback: function() {
-							var html = '<pre class="brush: js; ruler: true; first-line: 1; highlight: [1, 3, 5]">Insert your code here</pre>';
-							console.log(this == $.FroalaEditor.RegisterCommand);
-							this.html.insert(html);
+					var times = 0;
+					var imgUrl = uploadUpyun(this.files[0], "file1");
+					$('#loadingToast').show();
+					document.addEventListener('uploaded', function (e) {
+						if (times == 0) {
+							$("#article_img").attr('src', imgUrl);
+							$("#i_article_img").val(imgUrl);
+							$('#loadingToast').hide();
 						}
-					});
-
-					$.FroalaEditor.DefineIcon('imageInfo', {NAME: 'image'});
-		      $.FroalaEditor.RegisterCommand('imageInfo', {
-		        title: '插入图片',
-		        focus: false,
-		        undo: false,
-		        refreshAfterCallback: false,
-		        callback: function () {
-							vFroalaEditor = this.html;
-							this.customPlugin.openBrowse();
-		        }
-		      });
-
-					$('#edit').froalaEditor(
-						{
-							enter: $.FroalaEditor.ENTER_DIV,
-		          heightMin:500,
-							heightMax: 500,
-		          language: 'zh_cn',
-							toolbarButtons: ['fontFamily', 'bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'subscript', 'superscript',
-								'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
-								'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
-								'|', 'insertLink', 'insertTable', 'insertHR',
-								'|', 'undo', 'redo', 'clearFormatting', 'html',
-								'|', 'insert','imageInfo'
-							],
-							toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize',
-								'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
-								'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
-								'|', 'insertLink', 'insertHR',
-								'|', 'undo', 'redo', 'html',
-								'|', 'insert','imageInfo'
-							],
-							toolbarButtonsSM: ['bold', 'italic', 'underline', 'fontFamily', 'fontSize',
-								'|', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL',
-								'|', 'insertLink',
-								'|', 'undo', 'redo', 'html',
-								'|', 'insert','imageInfo'
-							],
-							toolbarButtonsXS: ['bold', 'fontSize',
-								'|', 'align', 'formatOL', 'formatUL',
-								'|', 'insert','imageInfo'
-							],
-						}
-					);
-					$('#init2').on('click', function(e) {
-		        e.preventDefault();
-						console.log("Initializing Froala Editor...");
-						$('#edit').removeClass('fr-view').froalaEditor();
-					});
-					$('#destroy2').on('click', function(e) {
-		        e.preventDefault();
-						var html = $('#edit').froalaEditor('html.get');
-		        $("#paragraphs").val(html);
-						console.log(html);
-							$("#sky-form").submit();
-
-						console.log("Destroying Froala Editor...");
-						$('#edit').froalaEditor('destroy');
-						$('#edit').addClass('fr-view');
+						times++;
 					});
 				});
-			</script>
 
-		</div> <!-- /.main-page-wrapper -->
-	</body>
+				var vFroalaEditor;
+				function uuid() {
+					var s = [];
+					var hexDigits = "0123456789abcdef";
+					for (var i = 0; i < 36; i++) {
+						s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+					}
+					s[14] = "4"; // bits 12-15 of the time_hi_and_version field to 0010
+					s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1); // bits 6-7 of the clock_seq_hi_and_reserved to 01
+					s[8] = s[13] = s[18] = s[23] = "-";
+
+					var uuid = s.join("");
+					return uuid;
+				}
+
+				function uploadUpyun(file, elementId) {
+					var ext = '.' + file.name.split('.').pop();
+
+					var config = {
+						// 空间名称
+						bucket: 'tripc2c-club-title',
+						// 上传请求过期时间
+						expiration: parseInt((new Date().getTime() + 3600000) / 1000),
+						// 尽量不要使用直接传表单 API 的方式，以防泄露造成安全隐患
+						form_api_secret: 'CRKAOsKHGbbCnU+yztBxUT0bYR0='
+					};
+
+					var instance = new Sand(config);
+					var options = {
+						'notify_url': 'http://upyun.com'
+					};
+					instance.setOptions(options);
+					instance.setElementId(elementId);
+
+					var d = new Date();
+					var month = d.getMonth() + 1;
+					var filename = '/avatar/' + d.getFullYear() + '/' + month + '/' + d.getDate() + '/' + uuid() + ext;
+					console.log(filename);
+					instance.upload(filename);
+
+					return 'https://tripc2c-club-title.b0.upaiyun.com' + filename;
+				};
+
+				$("#file").on("change", function () {
+					var times = 0;
+					var imgUrl = uploadUpyun(this.files[0], "file");
+					$('#loadingToast').show();
+					document.addEventListener('uploaded', function (e) {
+						if (times == 0) {
+							var html = '<img src="' + imgUrl + '" alt="" />';
+							vFroalaEditor.insert(html);
+							$('#loadingToast').hide();
+						}
+						times++;
+					});
+
+				});
+
+				$.FroalaEditor.PLUGINS.customPlugin = function (editor) {
+
+					function openBrowse() {
+						var ie = navigator.appName == "Microsoft Internet Explorer" ? true : false;
+						if (ie) {
+							document.getElementById("file").click();
+							document.getElementById("filename").value = document.getElementById("file").value;
+						} else {
+							var a = document.createEvent("MouseEvents");//FF的处理
+							a.initEvent("click", true, true);
+							document.getElementById("file").dispatchEvent(a);
+						}
+					};
+					// Methods visible outside the plugin.
+					return {
+						openBrowse: openBrowse
+					}
+
+				};
+
+				$.FroalaEditor.DefineIcon('insert', {
+					NAME: 'plus'
+				});
+				$.FroalaEditor.RegisterCommand('insert', {
+					title: 'Insert Code',
+					focus: true,
+					undo: true,
+					refreshAfterCallback: true,
+					callback: function () {
+						var html = '<pre class="brush: js; ruler: true; first-line: 1; highlight: [1, 3, 5]">Insert your code here</pre>';
+						console.log(this == $.FroalaEditor.RegisterCommand);
+						this.html.insert(html);
+					}
+				});
+
+				$.FroalaEditor.DefineIcon('imageInfo', { NAME: 'image' });
+				$.FroalaEditor.RegisterCommand('imageInfo', {
+					title: '插入图片',
+					focus: false,
+					undo: false,
+					refreshAfterCallback: false,
+					callback: function () {
+						vFroalaEditor = this.html;
+						this.customPlugin.openBrowse();
+					}
+				});
+
+				$('#edit').froalaEditor(
+					{
+						enter: $.FroalaEditor.ENTER_DIV,
+						heightMin: 500,
+						heightMax: 500,
+						language: 'zh_cn',
+						toolbarButtons: ['fontFamily', 'bold', 'italic', 'underline', 'strikeThrough', 'fontSize', 'subscript', 'superscript',
+							'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
+							'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
+							'|', 'insertLink', 'insertTable', 'insertHR',
+							'|', 'undo', 'redo', 'clearFormatting', 'html',
+							'|', 'insert', 'imageInfo'
+						],
+						toolbarButtonsMD: ['bold', 'italic', 'underline', 'strikeThrough', 'fontFamily', 'fontSize',
+							'|', 'color', 'emoticons', 'paragraphFormat', 'paragraphStyle',
+							'|', 'align', 'formatOL', 'formatUL', 'outdent', 'indent',
+							'|', 'insertLink', 'insertHR',
+							'|', 'undo', 'redo', 'html',
+							'|', 'insert', 'imageInfo'
+						],
+						toolbarButtonsSM: ['bold', 'italic', 'underline', 'fontFamily', 'fontSize',
+							'|', 'color', 'paragraphFormat', 'align', 'formatOL', 'formatUL',
+							'|', 'insertLink',
+							'|', 'undo', 'redo', 'html',
+							'|', 'insert', 'imageInfo'
+						],
+						toolbarButtonsXS: ['bold', 'fontSize',
+							'|', 'align', 'formatOL', 'formatUL',
+							'|', 'insert', 'imageInfo'
+						],
+					}
+				);
+				$('#init2').on('click', function (e) {
+					e.preventDefault();
+					console.log("Initializing Froala Editor...");
+					$('#edit').removeClass('fr-view').froalaEditor();
+				});
+				$('#destroy2').on('click', function (e) {
+					e.preventDefault();
+					var html = $('#edit').froalaEditor('html.get');
+					$("#paragraphs").val(html);
+					console.log(html);
+					$("#sky-form").submit();
+
+					console.log("Destroying Froala Editor...");
+					$('#edit').froalaEditor('destroy');
+					$('#edit').addClass('fr-view');
+				});
+			});
+		</script>
+
+	</div> <!-- /.main-page-wrapper -->
+</body>
+
 </html>
