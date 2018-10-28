@@ -52,6 +52,33 @@ class article_categories_dao(singleton):
 
 
     @gen.coroutine
+    def find_one(self, article_id, category_id):
+        # 执行一个查询
+        sql = "SELECT article_id, category_id, ctime, mtime" +\
+            " FROM article_categories " +\
+            " WHERE article_id='" + article_id +\
+            "' AND category_id='" + category_id +\
+            "'"
+        logging.debug("sql: %r", sql)
+
+        cur = yield Mysql_Connection_Pool().get_pool().execute(sql, ())
+        # 取得上个查询的结果，是数组
+        # 取得上个查询的结果，是数组
+        data = cur.fetchone()
+        logging.debug("data: %r", data)
+        if data:
+            info = {
+                "article_id":data[0],
+                "category_id":data[1],
+                "ctime":data[2],
+                "mtime":data[3],
+            }       
+            raise gen.Return(info)
+        else:
+            raise gen.Return(0)
+
+
+    @gen.coroutine
     def find_all(self, article_id):
         # 执行一个查询
         sql = "SELECT article_id, category_id, ctime, mtime" +\

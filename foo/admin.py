@@ -28,6 +28,8 @@ from global_const import *
 from base_handler import *
 from dao import symbol_dao
 from dao import article_dao
+from dao import article_categories_dao
+from dao import category_dao
 
 from tornado.escape import json_encode, json_decode
 from tornado.httpclient import HTTPClient
@@ -83,11 +85,23 @@ class AdminBlogCreateHandle(tornado.web.RequestHandler):
 
 
 class AdminBlogModifyHandle(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
     def get(self, article_id):
         logging.info("GET %r", self.request.uri)
         data = symbol_dao.symbol_dao().find(article_id)
         logging.info("GET article=%r", data)
-        self.render('admin/blog-modify.html', article_id=article_id, article=data["symbol"])
+
+        categories = yield category_dao.category_dao().find_all()
+        for category in categories:
+            category["checked"] = False
+            info = yield article_categories_dao.article_categories_dao().find_one(article_id, category["_id"])
+            if info:
+                category["checked"] = True
+
+        self.render('admin/blog-modify.html',
+            article_id=article_id,
+            article=data["symbol"],
+            categories=categories)
 
 
 class AdminBlogDetailsHandle(tornado.web.RequestHandler):
@@ -135,12 +149,24 @@ class AdminModifyXHR(tornado.web.RequestHandler):
         logging.info("got article_img %r", article_img)
         paragraphs = self.get_argument("paragraphs", "")
         logging.info("got paragraphs %r", paragraphs)
+        categories = self.get_arguments("categories")
+        logging.info("got categories %r", categories)
+
+        if not article_img:
+            old_symbol = symbol_dao.symbol_dao().find(article_id)
+            if old_symbol and old_symbol["symbol"].has_key("img"):
+                article_img = old_symbol["symbol"]["img"]
 
         symbol = {"symbol":{"title":title, "img":article_img, "paragraphs":paragraphs}}
         symbol["_id"] = article_id
         symbol["mtime"] = current_timestamp()
         symbol_dao.symbol_dao().insert(article_id, symbol)
         logging.info("Success[200]: modify symbol=[%r]", symbol)
+
+        yield article_categories_dao.article_categories_dao().delete_all(article_id)
+        for category_id in categories:
+            yield article_categories_dao.article_categories_dao().insert(article_id, category_id)
+        logging.info("Success[200]: update article=[%r] categories=[%r]", article_id, categories)
 
         self.redirect("/admin/blog-details/" + article_id)
 
