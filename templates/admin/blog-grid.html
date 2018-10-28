@@ -12,6 +12,15 @@
 
 		{% module Template("admin/block/css.html") %}
 
+		<style>
+		.author{
+			width:100%;
+			display:block;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -23,8 +32,6 @@
 			<div id="loader-wrapper">
 				<div id="loader"></div>
 			</div>
-
-
 
 
 			<!--
@@ -124,8 +131,8 @@
 				 var  d = new Date(parseInt(nS) * 1000);
 				 var year = d.getFullYear();
 				 var month = d.getMonth()+1;
-				 var day = d.getDay();
-				 var date_info = {"month":month+'月',"day":day+'日'};
+				 var day = d.getDate();
+				 var date_info = {"year":year+'年',"month":month+'月',"day":day+'日'};
 				 return date_info;
 			};
 
@@ -151,8 +158,7 @@
 							inner_html += '		<div class="image"><img src="'+pageData[i].symbol.img+'!370x324" alt=""></div>';
 							inner_html += '		<div class="text">';
 							inner_html += '			<div class="date">'+getLocalTime(pageData[i].ctime).year+getLocalTime(pageData[i].ctime).month+getLocalTime(pageData[i].ctime).day+'</div>';
-							inner_html += '			<h4><a href="/admin/blog-details/'+pageData[i]._id+'">'+pageData[i].symbol.title+'</a></h4>';
-							inner_html += '			<a href="#" class="author">By Mahfuz Riad</a>';
+							inner_html += '			<a href="#" class="author">'+pageData[i].symbol.title+'</a>';
 							inner_html += '			<a href="/admin/blog-details/'+pageData[i]._id+'" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 							inner_html += '		</div>';
 							inner_html += '	</div>';
@@ -198,7 +204,7 @@
 							inner_html += '		<div class="text">';
 							inner_html += '			<div class="date">'+getLocalTime(pageData[i].ctime).year+getLocalTime(pageData[i].ctime).month+getLocalTime(pageData[i].ctime).day+'</div>';
 							inner_html += '			<h4><a href="/admin/blog-details/'+pageData[i]._id+'">'+pageData[i].symbol.title+'</a></h4>';
-							inner_html += '			<a href="#" class="author">By Mahfuz Riad</a>';
+							inner_html += '			<a href="#" class="author">'+pageData[i].symbol.title+'</a>';
 							inner_html += '			<a href="/admin/blog-details/'+pageData[i]._id+'" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
 							inner_html += '		</div>';
 							inner_html += '	</div>';
