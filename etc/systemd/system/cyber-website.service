@@ -5,7 +5,8 @@ Wants=nginx.service cyber-ssdb-article
 
 [Service]
 WorkingDirectory=/opt/cyberlife/service/cyber-website
-ExecStart=/bin/env python2.7 index.py -log_file_prefix=/opt/cyberlife/logs/cyber-website.log
+#ExecStart=/bin/env python2.7 index.py -log_file_prefix=/opt/cyberlife/logs/cyber-website.log
+ExecStart=/bin/env python2.7 index.py
 Type=simple
 Restart=on-failure
 RestartSec=5s

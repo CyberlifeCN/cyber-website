@@ -56,20 +56,24 @@ def init_logging(port):
     logger.setLevel(Config.log_level)
 
     # fh = logging.FileHandler(os.path.join(Config.log_path, log_file))
-    fh = logging.handlers.TimedRotatingFileHandler(
-        os.path.join(Config.log_path, log_file), when='D', backupCount=10)
-    sh = logging.StreamHandler()
+    # fh = logging.handlers.TimedRotatingFileHandler(
+    #    os.path.join(Config.log_path, log_file), when='D', backupCount=10)
+    fh = logging.handlers.RotatingFileHandler(
+        os.path.join(Config.log_path, log_file),
+        maxBytes=10*1024*1024,
+        backupCount=10)
+    # sh = logging.StreamHandler()
 
     ###########This set the logging level that show on the screen#############
-    # sh.setLevel(logging.DEBUG)
+    # fh.setLevel(logging.DEBUG)
     # sh.setLevel(logging.ERROR)
 
     formatter = logging.Formatter('%(asctime)s -%(module)s:%(filename)s-L%(lineno)d-%(levelname)s: %(message)s')
     fh.setFormatter(formatter)
-    sh.setFormatter(formatter)
+    # sh.setFormatter(formatter)
 
     logger.addHandler(fh)
-    logger.addHandler(sh)
+    # logger.addHandler(sh)
     logging.info("Current log level is : %s",
                  logging.getLevelName(logger.getEffectiveLevel()))
 
