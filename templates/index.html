@@ -156,33 +156,17 @@
 						<a href="/service" class="theme-button-one">See More Services</a>
 					</div> <!-- /.theme-title -->
 					<div class="row">
+						{% for service in services %}
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/1.jpg') }}" alt=""></div>
+								<div class="image"><img src='{{ service["symbol"]["img"] }}!370x207' alt=""></div>
 								<div class="text">
-									<h4><a href="service-details.html">Business Accounting</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
+									<h4><a href="service-details.html">{{ service["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
+									<p>{{ service["symbol"]["sub_title"] }}</p>
 								</div> <!-- /.text -->
 							</div> <!-- /.single-service -->
 						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/2.jpg') }}" alt=""></div>
-								<div class="text">
-									<h4><a href="/website/service-details">Business Consulting</a> <i class="flaticon-upload"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/3.jpg') }}" alt=""></div>
-								<div class="text">
-									<h4><a href="/website/service-details">Expert Team Mates</a> <i class="flaticon-devices"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
+						{% end %}
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-service -->
@@ -245,34 +229,17 @@
 					</div> <!-- /.theme-title -->
 
 					<div class="row">
+						{% for project in projects %}
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="single-project">
-								<div class="image"><img src="{{ static_url('images/project/1.jpg') }}" alt=""></div>
+								<div class="image"><img src='{{ project["symbol"]["img"] }}!370x330' alt=""></div>
 								<div class="text">
-									<h4><a href="project-details.html">Inobiz Business Inc.</a> <i class="flaticon-pie-chart"></i></h4>
+									<h4><a href="project-details.html">{{ project["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
 									<p>Accounting, Idea</p>
 								</div> <!-- /.text -->
 							</div> <!-- /.single-project -->
 						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-project">
-								<div class="image"><img src="{{ static_url('images/project/2.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="/website/project-details">Chanze Renovation Inc.</a> <i class="flaticon-clipboard"></i></h4>
-									<p>Business, Idea</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-project -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-project">
-								<div class="image"><img src="{{ static_url('images/project/3.jpg') }}" alt=""></div>
-								<div class="text">
-									<h4><a href="/website/project-details">Cllo Financial Inc.</a> <i class="flaticon-puzzle"></i></h4>
-									<p>Services, Idea</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-project -->
-						</div> <!-- /.col- -->
+						{% end %}
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-project -->
@@ -361,39 +328,19 @@
 						<a href="/blog-grid" class="theme-button-one">See More News</a>
 					</div> <!-- /.theme-title -->
 					<div class="row">
+						{% for new in news %}
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="single-blog">
-								<div class="image"><img src="{{ static_url('images/blog/1.jpg') }}" alt=""></div>
+								<div class="image"><img src='{{ new["symbol"]["img"] }}!370x330'  alt=""></div>
 								<div class="text">
 									<div class="date">20 February 2017</div>
-									<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
+									<h4><a href="blog-details.html">{{ new["symbol"]["title"] }}</a></h4>
 									<a href="#" class="author">By Mahfuz Riad</a>
-									<a href="/website/blog-details" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+									<a href='/blog-details/{{ new["symbol"]["_id"] }}' class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 								</div>
 							</div> <!-- /.single-blog -->
 						</div>
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-blog">
-								<div class="image"><img src="{{ static_url('images/blog/2.jpg') }}" alt=""></div>
-								<div class="text">
-									<div class="date">20 February 2017</div>
-									<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
-									<a href="#" class="author">By Mahfuz Riad</a>
-									<a href="/website/blog-details" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-								</div>
-							</div> <!-- /.single-blog -->
-						</div>
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-blog">
-								<div class="image"><img src="{{ static_url('images/blog/3.jpg') }}" alt=""></div>
-								<div class="text">
-									<div class="date">20 February 2017</div>
-									<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
-									<a href="#" class="author">By Mahfuz Riad</a>
-									<a href="/website/blog-details" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-								</div>
-							</div> <!-- /.single-blog -->
-						</div>
+						{% end %}
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-blog -->

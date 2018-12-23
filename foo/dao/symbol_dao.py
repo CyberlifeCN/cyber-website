@@ -71,7 +71,7 @@ class symbol_dao(singleton):
     def find(self, _id):
         resp = self.request('get', [_id])
         logging.debug("select|%r|%r", _id, resp)
-        if resp.data:
+        if resp and resp.data:
             return JSON.loads(resp.data)
         else:
             return None

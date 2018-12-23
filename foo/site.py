@@ -28,6 +28,7 @@ from global_const import *
 from base_handler import *
 from dao import symbol_dao
 from dao import category_dao
+from dao import article_categories_dao
 
 from tornado.escape import json_encode, json_decode
 from tornado.httpclient import *
@@ -35,8 +36,33 @@ from tornado.httputil import url_concat
 
 
 class SiteIndexHandle(tornado.web.RequestHandler):
+    @tornado.gen.coroutine
     def get(self):
-        self.render('index.html')
+        category_id = "db957c6ed38611e8be700017fa03296f"
+        articles = yield article_categories_dao.article_categories_dao().find_pagination(category_id, 0, 3)
+        news = []
+        for article in articles:
+            data = symbol_dao.symbol_dao().find(article["article_id"])
+            news.append(data)
+
+        category_id = "9771de04d38811e8ab5c0017fa03296f"
+        articles = yield article_categories_dao.article_categories_dao().find_pagination(category_id, 0, 3)
+        projects = []
+        for article in articles:
+            data = symbol_dao.symbol_dao().find(article["article_id"])
+            projects.append(data)
+
+        category_id = "475d7b40d37d11e887b20017fa03296f"
+        articles = yield article_categories_dao.article_categories_dao().find_pagination(category_id, 0, 3)
+        services = []
+        for article in articles:
+            data = symbol_dao.symbol_dao().find(article["article_id"])
+            services.append(data)
+
+        self.render('index.html',
+            services=services,
+            projects=projects,
+            news=news)
 
 
 class SiteIndex2Handle(tornado.web.RequestHandler):

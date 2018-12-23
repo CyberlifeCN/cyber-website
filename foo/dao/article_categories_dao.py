@@ -72,7 +72,7 @@ class article_categories_dao(singleton):
                 "category_id":data[1],
                 "ctime":data[2],
                 "mtime":data[3],
-            }       
+            }
             raise gen.Return(info)
         else:
             raise gen.Return(0)
@@ -109,7 +109,7 @@ class article_categories_dao(singleton):
             " FROM article_categories " +\
             " WHERE category_id='" + category_id +\
             "' LIMIT " + str(idx) + "," + str(limit)
-        logging.info("sql: %r", sql)
+        logging.debug("sql: %r", sql)
 
         cur = yield Mysql_Connection_Pool().get_pool().execute(sql, ())
         array = []

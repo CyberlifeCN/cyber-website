@@ -32,6 +32,7 @@ from global_const import *
 from base_handler import *
 from dao import symbol_dao
 from dao import article_dao
+from dao import article_categories_dao
 
 from tornado.escape import json_encode, json_decode
 from tornado.httpclient import *
@@ -204,6 +205,7 @@ class ArticleSingleXHR(BaseHandler):
         return
 
 
+    @tornado.gen.coroutine
     @swagger.operation(nickname='delete')
     def delete(self, _id):
         """
@@ -213,8 +215,9 @@ class ArticleSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        symbol_dao.symbol_dao().delete(_id)
+        yield article_categories_dao.article_categories_dao().delete_all(_id)
         yield article_dao.article_dao().delete(_id)
+        symbol_dao.symbol_dao().delete(_id)
 
         logging.debug("Success[200]: delete article=[%r]", _id)
         self.set_status(200) # OK

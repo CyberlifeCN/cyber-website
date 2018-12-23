@@ -25,8 +25,6 @@
 			</div>
 
 
-
-
 			<!--
 			=============================================
 				Theme Header
@@ -78,8 +76,8 @@
 			        <h3>If you want to modify this Article… Just touch on this button</h3>
 			      </div>
 			      <div class="col-md-3 col-sm-4 col-xs-12">
-			        <a href="/admin/blog-modify/{{ article_id }}" class="theme-button-one float-right">Modify Article</a>
-			      </div>
+							<a href="/admin/blog-modify/{{ article_id }}" class="theme-button-one float-right">Modify Article</a>
+						</div>
 			    </div>
 			  </div> <!-- /.container -->
 			</div> <!-- /.bottom-banner -->
@@ -95,7 +93,9 @@
 					<div class="row">
 						<div class="col-lg-9 col-md-8 col-xs-12">
 							<div class="blog-post-data">
-								<div class="image"><img src='{{ article["img"] }}' alt=""></div>
+								<div class="image">
+										<img src='{{ article["img"] }}' alt="">
+								</div>
 								<div class="blog-title">
 									<ul>
 										<li>20 February 2017</li>
@@ -198,13 +198,23 @@
 			</div> <!-- /.our-blog -->
 
 
-
 			<!--
 			=============================================
-				Bottom Banner
+				create article button
 			==============================================
 			-->
-			{% module Template("admin/block/contact-banner.html") %}
+			<div class="bottom-banner">
+			  <div class="container">
+			    <div class="row">
+			      <div class="col-md-9 col-sm-8 col-xs-12">
+			        <h3>If you want to modify this Article… Just touch on this button</h3>
+			      </div>
+						<div class="col-md-3 col-sm-4 col-xs-12">
+			        <a id="btnDelete" onclick="deleteArticle();" class="theme-button-one float-right">Delete Article</a>
+			      </div>
+			    </div>
+			  </div> <!-- /.container -->
+			</div> <!-- /.bottom-banner -->
 
 
 			<!--
@@ -219,5 +229,37 @@
 		{% module Template("admin/block/js.html") %}
 
 		</div> <!-- /.main-page-wrapper -->
+
+		<link href="{{ static_url('weui/css/jquery-weui.min.css') }}" rel="stylesheet">
+		<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
+		<script type="text/javascript">
+		function deleteArticle(){
+			var article_id = "{{ article_id }}";
+			console.log(article_id);
+
+			$.ajax({
+					url: `/website/api/articles/{{ article_id }}`,
+					type: 'DELETE',
+					dataType: 'json',
+					success: (data) => {
+							switch (data.errCode) {
+									case 200:
+											$.toast('删除成功!');
+											window.location.href = '/admin/blog-grid';
+											break;
+									case 401:
+											$.toast('删除失败,权限错误[401]', "forbidden");
+											break;
+									case 500:
+											$.toast('删除失败,未知服务器错误[500]', "forbidden");
+											break;
+							}
+					},
+					error: () => {
+							$.toast('删除失败，请检查网络连接!', "forbidden");
+					}
+			});
+		}
+		</script>
 	</body>
 </html>
