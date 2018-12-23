@@ -10,7 +10,7 @@
 
 		<title>inobiz -  Business & Agency Template</title>
 
-		{% module Template("block/css.html") %}
+		{% module Template("web/block/css.html") %}
 
 	</head>
 
@@ -37,7 +37,7 @@
 
 					<div class="header-wrapper clearfix">
 
-						{% module Template("block/menu-banner.html") %}
+						{% module Template("web/block/menu-banner.html") %}
 
 					</div> <!-- /.header-wrapper -->
 				</div> <!-- /.container -->
@@ -53,11 +53,13 @@
 				<div class="opacity">
 					<div class="container">
 						<p>Inpire Your Business, Our talent team member of business agency </p>
-						<h2>Blog Details</h2>
+						<h2>Our Blog</h2>
 						<ul>
-							<li><a href="/">首页</a></li>
+							<li><a href="/">Home</a></li>
 							<li>.</li>
-							<li>Blog Details</li>
+							<li><a href="#">Page</a></li>
+							<li>.</li>
+							<li>Blog</li>
 						</ul>
 					</div> <!-- /.container -->
 				</div> <!-- /.opacity -->
@@ -69,64 +71,58 @@
 				Our Blog
 			==============================================
 			-->
-			<div class="our-blog section-margin-bottom blog-details">
+			<div class="our-blog section-margin-bottom-two blog-list">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-9 col-md-8 col-xs-12">
-							<div class="blog-post-data">
-								<div class="image"><img src='{{ article["img"] }}!870x395' alt=""></div>
-								<div class="blog-title">
-									<ul>
-										<li>20 February 2017</li>
-										<li>By Ghost CEO</li>
-										<li>in Consulting</li>
-									</ul>
-									<h3>{{ article["title"] }}</h3>
-									<h5>{{ article["sub_title"] }}</h5>
-								</div> <!-- /.blog-title -->
-								<div class="text-wrapper">
-									<p>{% raw article['paragraphs'] %}</p>
-								</div> <!-- /text-wrapper -->
-
-								<div class="share-option">
-									<ul class="clearfix page-changer">
-										<li class="float-left"><a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i> &nbsp; Previous post</a></li>
-										<li class="float-right"><a href="#">Next Post &nbsp; <i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
-									</ul>
-									<ul class="social-icon">
-										<li><a href="#" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-										<li><a href="#" class="tran3s"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-									</ul>
-								</div>
-
-								<div class="author-text">
-									<h4 class="title-inner">About author</h4>
-									<div class="author-data clearfix">
-										<img src="{{ static_url('images/blog/14.jpg') }}" alt="" class="float-left">
-										<div class="text float-left">
-											<h5>MAhfuz Riad</h5>
-											<p>Admin Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia </p>
-										</div>
+							<div class="single-blog">
+								<div class="image"><img src="{{ static_url('images/blog/10.jpg') }}" alt=""></div>
+								<div class="text">
+									<div class="space-fix">
+										<div class="date">20 February 2017</div>
+										<a href="#" class="author">By Mahfuz Riad</a>
+										<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
+										<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>
 									</div>
-								</div> <!-- /.author-text -->
-
-								<div class="reply-comment-section">
-									<h4 class="title-inner">Add your comments</h4>
-									<form action="#">
-										<div class="row">
-											<div class="col-sm-6 col-xs-12 float-right">
-												<input type="text" placeholder="Name">
-												<input type="text" placeholder="Subject">
-												<input type="email" placeholder="Email">
-											</div>
-											<div class="col-sm-6 col-xs-12"><textarea placeholder="Message"></textarea></div>
-										</div> <!-- /.row -->
-										<button class="theme-button-one p-bg-color">Submit Text</button>
-									</form>
-								</div> <!-- /.reply-comment-section -->
-							</div> <!-- /.blog-post-data -->
+									<a href="blog-details.html" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+								</div>
+							</div> <!-- /.single-blog -->
+							<div class="single-blog">
+								<div class="image"><img src="{{ static_url('images/blog/11.jpg') }}" alt=""></div>
+								<div class="text">
+									<div class="space-fix">
+										<div class="date">20 February 2017</div>
+										<a href="#" class="author">By Mahfuz Riad</a>
+										<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
+										<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>
+									</div>
+									<a href="blog-details.html" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+								</div>
+							</div> <!-- /.single-blog -->
+							<div class="single-blog">
+								<div class="image"><img src="{{ static_url('images/blog/12.jpg') }}" alt=""></div>
+								<div class="text">
+									<div class="space-fix">
+										<div class="date">20 February 2017</div>
+										<a href="#" class="author">By Mahfuz Riad</a>
+										<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
+										<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>
+									</div>
+									<a href="blog-details.html" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+								</div>
+							</div> <!-- /.single-blog -->
+							<div class="single-blog">
+								<div class="image"><img src="{{ static_url('images/blog/13.jpg') }}" alt=""></div>
+								<div class="text">
+									<div class="space-fix">
+										<div class="date">20 February 2017</div>
+										<a href="#" class="author">By Mahfuz Riad</a>
+										<h4><a href="blog-details.html">Inobiz  Business Inc report</a></h4>
+										<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh.</p>
+									</div>
+									<a href="blog-details.html" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+								</div>
+							</div> <!-- /.single-blog -->
 						</div> <!-- /.col- -->
 						<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 theme-sidebar">
 							<form action="#" class="sidebar-search widget-margin">
@@ -136,9 +132,11 @@
 							<div class="sidebar-categories widget-margin">
 								<h4>Categories</h4>
 								<ul>
-									{% for category in categories %}
-										<li><a href="/admin/blog-list?category_id={{ category["_id"] }}">{{ category["name"] }} <span>( 12 )</span></a></li>
-									{% end %}
+									<li><a href="#">Business <span>( 12 )</span></a></li>
+									<li><a href="#">Accounting <span>( 10 )</span></a></li>
+									<li><a href="#">Consulting <span>( 09 )</span></a></li>
+									<li><a href="#">Business Partner <span>( 05 )</span></a></li>
+									<li><a href="#">Business Partner <span>( 11 )</span></a></li>
 								</ul>
 							</div> <!-- /.sidebar-categories -->
 
@@ -183,7 +181,7 @@
 				Bottom Banner
 			==============================================
 			-->
-			{% module Template("block/contact-banner.html") %}
+			{% module Template("web/block/contact-banner.html") %}
 
 
 			<!--
@@ -191,11 +189,11 @@
 				Footer
 			==============================================
 			-->
-			{% module Template("block/footer.html") %}
+			{% module Template("web/block/footer.html") %}
 
 
 		<!-- Js File_________________________________ -->
-		{% module Template("block/js.html") %}
+		{% module Template("web/block/js.html") %}
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>

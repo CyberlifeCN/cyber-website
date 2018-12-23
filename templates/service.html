@@ -53,13 +53,11 @@
 				<div class="opacity">
 					<div class="container">
 						<p>Inpire Your Business, Make your business more productive, deliver lightning fast and more</p>
-						<h2>Business Services</h2>
+						<h2>解决方案</h2>
 						<ul>
-							<li><a href="/">Home</a></li>
+							<li><a href="/">首页</a></li>
 							<li>.</li>
-							<li><a href="#">Page</a></li>
-							<li>.</li>
-							<li>Services</li>
+							<li>解决方案</li>
 						</ul>
 					</div> <!-- /.container -->
 				</div> <!-- /.opacity -->
@@ -71,102 +69,22 @@
 				Our Service
 			==============================================
 			-->
-			<div class="our-service section-margin-bottom">
+			<div id="main" class="our-service section-margin-bottom">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-4 col-sm-6 col-xs-12">
+						<div class="col-md-4 col-sm-6 col-xs-12" v-for="(data,index) in datas" :key="index">
 							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/1.jpg') }}" alt=""></div>
+								<div class="image"><img :src="data.symbol.img" alt=""></div>
 
 								<div class="text">
-									<h4><a href="service-details.html">Business accounting</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/2.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Business Consulting</a> <i class="flaticon-upload"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/3.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Expert Team Mates</a> <i class="flaticon-devices"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/4.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Text Analysis</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/5.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Consulting Idea</a> <i class="flaticon-upload"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/6.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Digital Marketing</a> <i class="flaticon-devices"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/7.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Accounting</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/8.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Startup Consultation</a> <i class="flaticon-upload"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-service -->
-						</div> <!-- /.col- -->
-						<div class="col-md-4 col-sm-6 col-xs-12">
-							<div class="single-service">
-								<div class="image"><img src="{{ static_url('images/service/9.jpg') }}" alt=""></div>
-
-								<div class="text">
-									<h4><a href="service-details.html">Web Development</a> <i class="flaticon-devices"></i></h4>
-									<p>Interdum iusto pulvinar consequuntur augue optio repellat fuga  Purus expedita fusce temp oribus.</p>
+									<h4><a @click="detail(data._id)">{[ data.symbol.title ]}</a> <i class="flaticon-pie-chart"></i></h4>
+									<p>{[ data.symbol.sub_title ]}</p>
 								</div> <!-- /.text -->
 							</div> <!-- /.single-service -->
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->
 
-					<div class="load-more-button text-center"><a href="#" class="theme-button-one">See more services</a></div>
+					<div class="load-more-button text-center"><a @click="fetchDatas()" class="theme-button-one">See more services</a></div>
 				</div> <!-- /.container -->
 			</div> <!-- /.our-service -->
 
@@ -230,12 +148,68 @@
 			-->
 			{% module Template("block/footer.html") %}
 
+		</div> <!-- /.main-page-wrapper -->
 
 		<!-- Js File_________________________________ -->
 
 		<!-- j Query -->
 		{% module Template("block/js.html") %}
+		<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
+		<script src="{{ static_url('vue/vue.min.js') }}"></script>
 
-		</div> <!-- /.main-page-wrapper -->
+		<script type="text/javascript">
+        $.toast.prototype.defaults.duration = 1200;
+        let app = new Vue({
+            el: '#main',
+            delimiters: ['{[', ']}'],
+            data() {
+                return {
+                    limit: 12,
+                    datas: [],
+										pageNum: 1,
+                }
+            },
+            computed: {
+            },
+            methods: {
+                fetchDatas() {
+                    _this = this
+                    $.ajax({
+                        type: "GET",
+                        url: `/website/api/categories/475d7b40d37d11e887b20017fa03296f/articles?limit=${_this.limit}&page=${_this.pageNum}`,
+                        dataType: "json",
+                        success: (data) => {
+                            switch (data.errCode) {
+                                case 200:
+																		console.log(data);
+																		var array = data.rs.data;
+																		for (var i=0;i<array.length;i++) {
+																				array[i].symbol.img = array[i].symbol.img+"!370x207";
+																				_this.datas.push(array[i]);
+																		}
+																		this.pageNum++;
+                                    break;
+                                case 401:
+                                    $.toast("查询失败,权限错误[errCode:401]", "forbidden");
+                                    break;
+                                case 500:
+                                    $.toast("查询失败,未知服务器错误[errorCode:500]", "forbidden");
+                                    break;
+                            }
+                        },
+                        error: () => {
+                            $.toast("查询失败,请检查网络连接", "forbidden");
+                        }
+                    })
+                },
+                detail(uuid) {
+                    window.location.href = '/blog-details/'+uuid;
+                },
+            },
+            mounted() {
+                this.fetchDatas();
+            }
+        });
+    </script>
 	</body>
 </html>

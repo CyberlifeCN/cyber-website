@@ -33,6 +33,7 @@ from foo import api_article_categories
 from foo import api_category_articles
 from foo import web
 from foo import admin
+from foo import site
 
 
 def map():
@@ -63,7 +64,6 @@ def map():
         (r'/admin/shop-single', getattr(admin, 'AdminShopSingleHandle')),
         (r'/admin/404', getattr(admin, 'Admin404Handle')),
 
-        (r'/', getattr(web, 'WebIndexHandle')),
         (r'/website/index', getattr(web, 'WebIndexHandle')),
         (r'/website/index-2', getattr(web, 'WebIndex2Handle')),
         (r'/website/contact', getattr(web, 'WebContactHandle')),
@@ -79,6 +79,27 @@ def map():
         (r'/website/service-details', getattr(web, 'WebServiceDetailsHandle')),
         (r'/website/shop', getattr(web, 'WebShopHandle')),
         (r'/website/shop-single', getattr(web, 'WebShopSingleHandle')),
+
+        (r'/', getattr(site, 'SiteIndexHandle')),
+        (r'/index', getattr(site, 'SiteIndexHandle')),
+        (r'/index-2', getattr(site, 'SiteIndex2Handle')),
+        (r'/contact', getattr(site, 'SiteContactHandle')),
+        (r'/about-us', getattr(site, 'SiteAboutUsHandle')),
+        (r'/team', getattr(site, 'SiteTeamHandle')),
+        (r'/faq', getattr(site, 'SiteFaqHandle')),
+        (r'/blog-grid', getattr(site, 'SiteBlogGridHandle')),
+        (r'/blog-list', getattr(site, 'SiteBlogListHandle')),
+        (r'/blog-details/([a-z0-9]+)', getattr(site, 'SiteBlogDetailsHandle')),
+        (r'/project', getattr(site, 'SiteProjectHandle')),
+        (r'/project-details', getattr(site, 'SiteProjectDetailsHandle')),
+        (r'/service', getattr(site, 'SiteServiceHandle')),
+        (r'/service-details', getattr(site, 'SiteServiceDetailsHandle')),
+        (r'/shop', getattr(site, 'SiteShopHandle')),
+        (r'/shop-single', getattr(site, 'SiteShopSingleHandle')),
+        (r'/publish-agreement', getattr(site, 'SitePublishAgreementHandle')),
+        (r'/privacy-statement', getattr(site, 'SitePrivacyStatementHandle')),
+        (r'/end-user-license-agreement', getattr(site, 'SiteEndUserLicenseAgreementHandle')),
+
 
         (r'/website/api/symbols', getattr(api_symbol, 'SymbolXHR')),
         (r'/website/api/symbols/([a-z0-9]+)', getattr(api_symbol, 'SymbolSingleXHR')),

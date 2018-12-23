@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!-- For IE -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<!-- For Resposive Device -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>inobiz -  Business & Agency Template</title>
+
+		{% module Template("web/block/css.html") %}
+
+	</head>
+
+	<body>
+		<div class="main-page-wrapper">
+
+			<!-- ===================================================
+				Loading Transition
+			==================================================== -->
+			<div id="loader-wrapper">
+				<div id="loader"></div>
+			</div>
+
+
+
+
+			<!--
+			=============================================
+				Theme Header
+			==============================================
+			-->
+			<header class="theme-menu-wrapper">
+				<div class="container">
+
+					<div class="header-wrapper clearfix">
+
+						{% module Template("web/block/menu-banner.html") %}
+
+					</div> <!-- /.header-wrapper -->
+				</div> <!-- /.container -->
+			</header> <!-- /.theme-menu-wrapper -->
+
+
+			<!--
+			=============================================
+				Theme Inner Banner
+			==============================================
+			-->
+			<div class="theme-inner-banner">
+				<div class="opacity">
+					<div class="container">
+						<p>Inpire Your Business, Make your business more productive, deliver lightning fast and more</p>
+						<h2>Project Details</h2>
+						<ul>
+							<li><a href="/">Home</a></li>
+							<li>.</li>
+							<li><a href="#">Page</a></li>
+							<li>.</li>
+							<li>Project details</li>
+						</ul>
+					</div> <!-- /.container -->
+				</div> <!-- /.opacity -->
+			</div> <!-- /.theme-inner-banner -->
+
+
+			<!--
+			=============================================
+				Project Details
+			==============================================
+			-->
+			<div class="project-details section-margin-bottom">
+				<div class="container">
+					<div class="wrapper clearfix">
+						<div class="row">
+							<div class="col-lg-9 col-md-8 col-xs-12"><img src="images/project/10.jpg" alt=""></div>
+							<div class="col-lg-3 col-md-4 col-xs-12">
+								<ul class="project-onformation">
+									<li>
+										<h6>1. Project Type</h6>
+										<p>Web Design for Snappy inc</p>
+									</li>
+									<li>
+										<h6>2. Client</h6>
+										<p>Snappy Inc</p>
+									</li>
+									<li>
+										<h6>3. Live url</h6>
+										<p>www.themeforest.com</p>
+									</li>
+									<li>
+										<h6>4. Period</h6>
+										<p>11 march 2017</p>
+									</li>
+								</ul>
+							</div> <!-- /.col- -->
+						</div> <!-- /.row -->
+						<div class="details-page-overview">
+							<h2>Project Overview</h2>
+							<p>Oisseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing and goal-oriented intellectual capital. Phosfluorescently foster e-business sources whereas sustainable internal or “organic” sources.</p>
+							<p>disseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing</p>
+							<p>disseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magniol res eos qui rate voluptatem sequi nesciunt Neque porro quisquam est qui dolorem ipsum qui dolore sit amet con sectetur adipisci vel sed quia suthagara </p>
+							<h3>I’m thankful for my strunggle because without it I wouldn’t have <br> stumbled across my strength.</h3>
+							<ul>
+								<li>Small Story About Us</li>
+								<li>Eligendi quaerat vitae ad quam, mollitia eum obcaecati</li>
+								<li>Good luck and keep it up! </li>
+								<li>I have never seen such a great quality</li>
+							</ul>
+							<div class="row">
+								<div class="col-md-7 col-sm-8 col-xs-12"><img src="{{ static_url('images/home/3.jpg') }}" alt=""></div>
+							</div>
+						</div> <!-- /.details-page-overview -->
+					</div> <!-- /.wrapper -->
+
+					<ul class="clearfix page-changer">
+						<li class="float-left"><a href="#"><i class="flaticon-long-left-arrow"></i> &nbsp; Back to Project</a></li>
+						<li class="float-right"><a href="#">Next Project &nbsp; <i class="flaticon-long-right-arrow"></i></a></li>
+					</ul>
+				</div> <!-- /.container -->
+			</div> <!-- /.project-details -->
+
+
+
+			<!--
+			=============================================
+				Bottom Banner
+			==============================================
+			-->
+			{% module Template("web/block/contact-banner.html") %}
+
+
+			<!--
+			=============================================
+				Footer
+			==============================================
+			-->
+			{% module Template("web/block/footer.html") %}
+
+
+		<!-- Js File_________________________________ -->
+		{% module Template("web/block/js.html") %}
+
+		</div> <!-- /.main-page-wrapper -->
+	</body>
+</html>

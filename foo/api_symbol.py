@@ -63,7 +63,6 @@ class SymbolXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("POST %r", self.request.uri)
         logging.debug(self.request.body)
 
         symbol = None
@@ -82,13 +81,13 @@ class SymbolXHR(BaseHandler):
             symbol_id = symbol["_id"]
             symbol["mtime"] = current_timestamp()
             symbol_dao.symbol_dao().insert(symbol_id, symbol)
-            logging.info("Success[200]: update symbol=[%r]", symbol)
+            logging.debug("Success[200]: update symbol=[%r]", symbol)
         else:
             symbol_id = generate_uuid_str()
             symbol["_id"] = symbol_id
             symbol["ctime"] = current_timestamp()
             symbol_dao.symbol_dao().insert(symbol_id, symbol)
-            logging.info("Success[200]: create symbol=[%r]", symbol)
+            logging.debug("Success[200]: create symbol=[%r]", symbol)
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":symbol_id}))
         self.finish()
@@ -108,11 +107,9 @@ class SymbolSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         symbol = symbol_dao.symbol_dao().find(_id)
         if symbol:
-            logging.info("OK(200): got symbol=[%r] from ssdb", symbol)
+            logging.debug("OK(200): got symbol=[%r] from ssdb", symbol)
             self.set_status(200) # OK
             self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":symbol}))
             self.finish()
@@ -139,7 +136,7 @@ class SymbolSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("PUT %r", self.request.uri)
+        logging.debug(self.request.body)
 
         symbol = None
         try:
@@ -155,7 +152,7 @@ class SymbolSingleXHR(BaseHandler):
         symbol["mtime"] = current_timestamp()
         symbol_dao.symbol_dao().insert(_id, symbol)
 
-        logging.info("Success[200]: update symbol=[%r]", symbol)
+        logging.debug("Success[200]: update symbol=[%r]", symbol)
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()
@@ -171,11 +168,9 @@ class SymbolSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("DELETE %r", self.request.uri)
-
         symbol_dao.symbol_dao().delete(_id)
 
-        logging.info("Success[200]: delete symbol=[%r]", _id)
+        logging.debug("Success[200]: delete symbol=[%r]", _id)
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()

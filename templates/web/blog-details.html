@@ -10,7 +10,7 @@
 
 		<title>inobiz -  Business & Agency Template</title>
 
-		{% module Template("block/css.html") %}
+		{% module Template("web/block/css.html") %}
 
 	</head>
 
@@ -37,7 +37,7 @@
 
 					<div class="header-wrapper clearfix">
 
-						{% module Template("block/menu-banner.html") %}
+						{% module Template("web/block/menu-banner.html") %}
 
 					</div> <!-- /.header-wrapper -->
 				</div> <!-- /.container -->
@@ -55,7 +55,9 @@
 						<p>Inpire Your Business, Our talent team member of business agency </p>
 						<h2>Blog Details</h2>
 						<ul>
-							<li><a href="/">首页</a></li>
+							<li><a href="/">Home</a></li>
+							<li>.</li>
+							<li><a href="#">Page</a></li>
 							<li>.</li>
 							<li>Blog Details</li>
 						</ul>
@@ -74,18 +76,26 @@
 					<div class="row">
 						<div class="col-lg-9 col-md-8 col-xs-12">
 							<div class="blog-post-data">
-								<div class="image"><img src='{{ article["img"] }}!870x395' alt=""></div>
+								<div class="image"><img src="{{ static_url('images/blog/10.jpg') }}" alt=""></div>
 								<div class="blog-title">
 									<ul>
 										<li>20 February 2017</li>
 										<li>By Ghost CEO</li>
 										<li>in Consulting</li>
 									</ul>
-									<h3>{{ article["title"] }}</h3>
-									<h5>{{ article["sub_title"] }}</h5>
+									<h3>How to select a small business</h3>
 								</div> <!-- /.blog-title -->
 								<div class="text-wrapper">
-									<p>{% raw article['paragraphs'] %}</p>
+									<p>Mauris volutpat aliquam tellus nec rhoncus. Aliquam et nibh pulvinar, sodales nibh et, pretium urna. Vivamus quam augue, maximus in consequat imperdiet, iaculis non nibh. Aliquam erat volutpat. Curabitur venenatis massa sed lacus tristique, non auctor nisl sodales. Sed ultricies lacus ut libero faucibus fringilla. Ut nisi tellus, posuere vel mattis nec, convallis a metus. Nullam elementum molestie felis nec lobortis. Cras at justo eu elit semper tempor sed quis orci. In risus magna, malesuada vel elementum ut, finibus et nunc.</p>
+									<p>Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. Assertively iterate resource maximizing products after leading-edge intellectual capital.</p>
+									<div class="bold-text">Objectively integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. </div>
+									<ul>
+										<li>Money for your future</li>
+										<li>Do you deserve a vacation?</li>
+										<li>We partner with startups and companies, small and large</li>
+										<li>Launching an attractive and scalable website quickly and affordably is important for modern </li>
+									</ul>
+									<p> Integrate enterprise-wide strategic theme areas with functionalized infrastructures. Interactively productize premium technologies whereas interdependent quality vectors. Rapaciously utilize enterprise experiences via 24/7 markets. Proactively fabricate one-to-one materials via effective e-business. Completely synergize scalable e-commerce rather than high standards in e-services. </p>
 								</div> <!-- /text-wrapper -->
 
 								<div class="share-option">
@@ -136,9 +146,11 @@
 							<div class="sidebar-categories widget-margin">
 								<h4>Categories</h4>
 								<ul>
-									{% for category in categories %}
-										<li><a href="/admin/blog-list?category_id={{ category["_id"] }}">{{ category["name"] }} <span>( 12 )</span></a></li>
-									{% end %}
+									<li><a href="#">Business <span>( 12 )</span></a></li>
+									<li><a href="#">Accounting <span>( 10 )</span></a></li>
+									<li><a href="#">Consulting <span>( 09 )</span></a></li>
+									<li><a href="#">Business Partner <span>( 05 )</span></a></li>
+									<li><a href="#">Business Partner <span>( 11 )</span></a></li>
 								</ul>
 							</div> <!-- /.sidebar-categories -->
 
@@ -183,7 +195,7 @@
 				Bottom Banner
 			==============================================
 			-->
-			{% module Template("block/contact-banner.html") %}
+			{% module Template("web/block/contact-banner.html") %}
 
 
 			<!--
@@ -191,11 +203,11 @@
 				Footer
 			==============================================
 			-->
-			{% module Template("block/footer.html") %}
+			{% module Template("web/block/footer.html") %}
 
 
 		<!-- Js File_________________________________ -->
-		{% module Template("block/js.html") %}
+		{% module Template("web/block/js.html") %}
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>

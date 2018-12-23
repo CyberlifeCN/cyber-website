@@ -63,7 +63,6 @@ class ArticleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("POST %r", self.request.uri)
         logging.debug(self.request.body)
 
         symbol = None
@@ -83,7 +82,7 @@ class ArticleXHR(BaseHandler):
         symbol["mtime"] = symbol["ctime"]
         symbol_dao.symbol_dao().insert(symbol_id, symbol)
         yield article_dao.article_dao().insert(symbol)
-        logging.info("Success[200]: create symbol=[%r]", symbol)
+        logging.debug("Success[200]: create symbol=[%r]", symbol)
 
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":symbol_id}))
@@ -112,12 +111,8 @@ class ArticleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         page = self.get_argument("page", 1)
-        logging.debug("get page=[%r] from argument", page)
         limit = self.get_argument("limit", 20)
-        logging.debug("get limit=[%r] from argument", limit)
 
         idx = (int(page) - 1) * int(limit)
         total_num = 0
@@ -137,7 +132,7 @@ class ArticleXHR(BaseHandler):
             total_page = int(total_num / int(limit)) + 1
         rs = {"page":page, "total_page":total_page, "data":datas}
 
-        logging.info("OK[200]: query articles: page=[%r] total_page=[%r] num=[%r]", page, total_page, len(datas))
+        logging.debug("OK[200]: query articles: page=[%r] total_page=[%r] num=[%r]", page, total_page, len(datas))
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":rs}))
         self.finish()
@@ -157,11 +152,9 @@ class ArticleSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         symbol = symbol_dao.symbol_dao().find(_id)
         if symbol:
-            logging.info("OK(200): got symbol=[%r] from ssdb", symbol)
+            logging.debug("OK(200): got symbol=[%r] from ssdb", symbol)
             self.set_status(200) # OK
             self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":symbol}))
             self.finish()
@@ -188,7 +181,7 @@ class ArticleSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("PUT %r", self.request.uri)
+        logging.debug(self.request.body)
 
         symbol = None
         try:
@@ -204,7 +197,7 @@ class ArticleSingleXHR(BaseHandler):
         symbol["mtime"] = current_timestamp()
         symbol_dao.symbol_dao().insert(_id, symbol)
 
-        logging.info("Success[200]: update symbol=[%r]", symbol)
+        logging.debug("Success[200]: update symbol=[%r]", symbol)
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()
@@ -220,12 +213,10 @@ class ArticleSingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("DELETE %r", self.request.uri)
-
         symbol_dao.symbol_dao().delete(_id)
         yield article_dao.article_dao().delete(_id)
 
-        logging.info("Success[200]: delete article=[%r]", _id)
+        logging.debug("Success[200]: delete article=[%r]", _id)
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()

@@ -154,7 +154,7 @@
 									<input type="hidden" id="article_id" name="article_id" value="{{ article_id }}">
 									<ul class="title-container">
 										<li>文章标题</li>
-										<li class="title-placeholder"><input type="text" name="title" id="title" placeholder="请输入文章标题" value="{{ article["title"] }}"></li>
+										<li class="title-placeholder"><input type="text" name="title" id="title" placeholder="请输入文章标题" value='{{ article["title"] }}'></li>
 									</ul>
 									<ul>
 										<li>封面图片</li>
@@ -167,6 +167,12 @@
 													<input type="file" id="file1" name="file1" style="display:none;">
 												</div>
 											</div>
+										</li>
+									</ul>
+									<ul class="title-container">
+										<li>文章概述</li>
+										<li class="title-placeholder">
+											<input type="text" name="sub_title" id="sub_title" placeholder="请输入文章概述" value='{{ article["sub_title"] }}'>
 										</li>
 									</ul>
 								</div> <!-- /.blog-title -->

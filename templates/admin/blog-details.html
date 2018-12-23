@@ -95,7 +95,7 @@
 					<div class="row">
 						<div class="col-lg-9 col-md-8 col-xs-12">
 							<div class="blog-post-data">
-								<div class="image"><img src="{{ article["img"] }}" alt=""></div>
+								<div class="image"><img src='{{ article["img"] }}' alt=""></div>
 								<div class="blog-title">
 									<ul>
 										<li>20 February 2017</li>
@@ -103,6 +103,7 @@
 										<li>in Consulting</li>
 									</ul>
 									<h3>{{ article["title"] }}</h3>
+									<h5>{{ article["sub_title"] }}</h5>
 								</div> <!-- /.blog-title -->
 								<div class="text-wrapper">
 									<p>{% raw article['paragraphs'] %}</p>

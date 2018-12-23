@@ -64,14 +64,13 @@ class ArticleCategoriesXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("PUT %r", self.request.uri)
         logging.debug(self.request.body)
 
         categories = None
         try:
             categories = json_decode(self.request.body)
         except:
-            logging.warn("Bad Request[400]: update article=[%r] categories=[%r]", article_id, self.request.body)
+            logging.warn("Bad Request[400]: update article=[%r]", self.request.body)
 
             self.set_status(200) # Bad Request
             self.write(JSON.dumps({"errCode":400,"errMsg":"Bad Request"}))
@@ -81,7 +80,7 @@ class ArticleCategoriesXHR(BaseHandler):
         yield article_categories_dao.article_categories_dao().delete_all(article_id)
         for category_id in categories:
             yield article_categories_dao.article_categories_dao().insert(article_id, category_id)
-        logging.info("Success[200]: update article=[%r] categories=[%r]", article_id, categories)
+        logging.debug("Success[200]: update article=[%r] categories=[%r]", article_id, categories)
 
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
@@ -100,14 +99,12 @@ class ArticleCategoriesXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         categories = yield article_categories_dao.article_categories_dao().find_all(article_id)
         for category in categories:
             category_info = yield category_dao.category_dao().find(category["category_id"])
             category["name"] = category_info["name"]
 
-        logging.info("OK[200]: query article=[%r] categories: num=[%r]", article_id, len(categories))
+        logging.debug("OK[200]: query article=[%r] categories=[%r]", article_id, len(categories))
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":categories}))
         self.finish()

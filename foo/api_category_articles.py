@@ -64,12 +64,8 @@ class CategoryArticlesXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         page = self.get_argument("page", 1)
-        logging.debug("get page=[%r] from argument", page)
         limit = self.get_argument("limit", 20)
-        logging.debug("get limit=[%r] from argument", limit)
 
         idx = (int(page) - 1) * int(limit)
         total_num = 0
@@ -89,7 +85,7 @@ class CategoryArticlesXHR(BaseHandler):
             total_page = int(total_num / int(limit)) + 1
         rs = {"page":page, "total_page":total_page, "data":datas}
 
-        logging.info("OK[200]: query articles: page=[%r] total_page=[%r] num=[%r]", page, total_page, len(datas))
+        logging.debug("OK[200]: query articles: page=[%r] total_page=[%r] num=[%r]", page, total_page, len(datas))
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":rs}))
         self.finish()

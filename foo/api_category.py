@@ -63,7 +63,6 @@ class CategoryXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("POST %r", self.request.uri)
         logging.debug(self.request.body)
 
         category = None
@@ -82,7 +81,7 @@ class CategoryXHR(BaseHandler):
         category["ctime"] = current_timestamp()
         category["mtime"] = category["ctime"]
         yield category_dao.category_dao().insert(category)
-        logging.info("Success[200]: create category=[%r]", category)
+        logging.debug("Success[200]: create category=[%r]", category)
 
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":category_id}))
@@ -101,11 +100,9 @@ class CategoryXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         categories = yield category_dao.category_dao().find_all()
 
-        logging.info("OK[200]: query categories: num=[%r]", len(categories))
+        logging.debug("OK[200]: query categories=[%r]", len(categories))
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":categories}))
         self.finish()
@@ -125,11 +122,9 @@ class CategorySingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("GET %r", self.request.uri)
-
         category = yield category_dao.category_dao().find(_id)
         if category:
-            logging.info("OK(200): got category=[%r] from mysql", category)
+            logging.debug("OK(200): got category=[%r] from mysql", category)
             self.set_status(200) # OK
             self.write(JSON.dumps({"errCode":200,"errMsg":"Success","rs":category}))
             self.finish()
@@ -157,7 +152,7 @@ class CategorySingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("PUT %r", self.request.uri)
+        logging.debug(self.request.body)
 
         category = None
         try:
@@ -174,7 +169,7 @@ class CategorySingleXHR(BaseHandler):
         category["mtime"] = current_timestamp()
         yield category_dao.category_dao().update(category)
 
-        logging.info("Success[200]: update category=[%r]", category)
+        logging.debug("Success[200]: update category=[%r]", category)
         self.set_status(200) # Created
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()
@@ -191,11 +186,9 @@ class CategorySingleXHR(BaseHandler):
             @raise 400: Invalid Input
             @raise 500: Internal Server Error
         """
-        logging.info("DELETE %r", self.request.uri)
-
         yield category_dao.category_dao().delete(_id)
 
-        logging.info("Success[200]: delete category=[%r]", _id)
+        logging.debug("Success[200]: delete category=[%r]", _id)
         self.set_status(200) # OK
         self.write(JSON.dumps({"errCode":200,"errMsg":"Success"}))
         self.finish()
