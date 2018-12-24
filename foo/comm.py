@@ -157,6 +157,17 @@ def timestamp_to_datehour(value):
 
 
 # 时间格式转换
+def timestamp_to_datehourmin(value):
+    #_format = '%Y-%m-%d %H:%M:%S'
+    _format = '%Y/%m/%d %H:%M'
+    # value is timestamp(int), eg: 1332888820
+    _value = time.localtime(value)
+    ## time.struct_time(tm_year=2012, tm_mon=3, tm_mday=28, tm_hour=6, tm_min=53, tm_sec=40, tm_wday=2, tm_yday=88, tm_isdst=0)
+    _dt = time.strftime(_format, _value)
+    return _dt
+
+
+# 时间格式转换
 def datemin_to_timestamp(dt):
      # dt is string
      time.strptime(dt, '%m/%d/%Y %H:%M')

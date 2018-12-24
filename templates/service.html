@@ -52,7 +52,7 @@
 			<div class="theme-inner-banner">
 				<div class="opacity">
 					<div class="container">
-						<p>Inpire Your Business, Make your business more productive, deliver lightning fast and more</p>
+						<p>帮助中小企业用户选择自己的门户（静态网站、动态信息发布网站、独立电商、联盟电商平台），以及各种IT解决方案。</p>
 						<h2>解决方案</h2>
 						<ul>
 							<li><a href="/">首页</a></li>
@@ -84,7 +84,7 @@
 						</div> <!-- /.col- -->
 					</div> <!-- /.row -->
 
-					<div class="load-more-button text-center"><a @click="fetchDatas()" class="theme-button-one">See more services</a></div>
+					<div class="load-more-button text-center"><a @click="fetchDatas()" class="theme-button-one">加载更多</a></div>
 				</div> <!-- /.container -->
 			</div> <!-- /.our-service -->
 
@@ -181,13 +181,13 @@
                         success: (data) => {
                             switch (data.errCode) {
                                 case 200:
-																		console.log(data);
-																		var array = data.rs.data;
-																		for (var i=0;i<array.length;i++) {
-																				array[i].symbol.img = array[i].symbol.img+"!370x207";
-																				_this.datas.push(array[i]);
-																		}
-																		this.pageNum++;
+									console.log(data);
+									var array = data.rs.data;
+									for (var i=0;i<array.length;i++) {
+											array[i].symbol.img = array[i].symbol.img+"!370x207";
+											_this.datas.push(array[i]);
+									}
+									this.pageNum++;
                                     break;
                                 case 401:
                                     $.toast("查询失败,权限错误[errCode:401]", "forbidden");
@@ -203,7 +203,7 @@
                     })
                 },
                 detail(uuid) {
-                    window.location.href = '/blog-details/'+uuid;
+                    window.location.href = '/service-details/'+uuid;
                 },
             },
             mounted() {

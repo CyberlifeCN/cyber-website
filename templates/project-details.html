@@ -52,14 +52,12 @@
 			<div class="theme-inner-banner">
 				<div class="opacity">
 					<div class="container">
-						<p>Inpire Your Business, Make your business more productive, deliver lightning fast and more</p>
-						<h2>Project Details</h2>
+						<p>交付客户价值，成就我们的理想</p>
+						<h2>成功案例</h2>
 						<ul>
-							<li><a href="/">Home</a></li>
+							<li><a href="/">首页</a></li>
 							<li>.</li>
-							<li><a href="#">Page</a></li>
-							<li>.</li>
-							<li>Project details</li>
+							<li>成功案例</li>
 						</ul>
 					</div> <!-- /.container -->
 				</div> <!-- /.opacity -->
@@ -68,60 +66,35 @@
 
 			<!--
 			=============================================
-				Project Details
+				Our Blog
 			==============================================
 			-->
-			<div class="project-details section-margin-bottom">
+			<div class="our-blog section-margin-bottom blog-details">
 				<div class="container">
-					<div class="wrapper clearfix">
-						<div class="row">
-							<div class="col-lg-9 col-md-8 col-xs-12"><img src="images/project/10.jpg" alt=""></div>
-							<div class="col-lg-3 col-md-4 col-xs-12">
-								<ul class="project-onformation">
-									<li>
-										<h6>1. Project Type</h6>
-										<p>Web Design for Snappy inc</p>
-									</li>
-									<li>
-										<h6>2. Client</h6>
-										<p>Snappy Inc</p>
-									</li>
-									<li>
-										<h6>3. Live url</h6>
-										<p>www.themeforest.com</p>
-									</li>
-									<li>
-										<h6>4. Period</h6>
-										<p>11 march 2017</p>
-									</li>
-								</ul>
-							</div> <!-- /.col- -->
-						</div> <!-- /.row -->
-						<div class="details-page-overview">
-							<h2>Project Overview</h2>
-							<p>Oisseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing and goal-oriented intellectual capital. Phosfluorescently foster e-business sources whereas sustainable internal or “organic” sources.</p>
-							<p>disseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing</p>
-							<p>disseminate economically sound bandwidth and frictionless methodologies. Quickly reinvent cross functional infrastructures without high standards in niche markets. Distinctively visualize open-source functionalities rather than interdependent e-business. Interactively simplify client-based collaboration and idea-sharing Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magniol res eos qui rate voluptatem sequi nesciunt Neque porro quisquam est qui dolorem ipsum qui dolore sit amet con sectetur adipisci vel sed quia suthagara </p>
-							<h3>I’m thankful for my strunggle because without it I wouldn’t have <br> stumbled across my strength.</h3>
-							<ul>
-								<li>Small Story About Us</li>
-								<li>Eligendi quaerat vitae ad quam, mollitia eum obcaecati</li>
-								<li>Good luck and keep it up! </li>
-								<li>I have never seen such a great quality</li>
-							</ul>
-							<div class="row">
-								<div class="col-md-7 col-sm-8 col-xs-12"><img src="{{ static_url('images/home/3.jpg') }}" alt=""></div>
-							</div>
-						</div> <!-- /.details-page-overview -->
-					</div> <!-- /.wrapper -->
+					<div class="row">
+						<div class="col-lg-9 col-md-8 col-xs-12">
+							<div class="blog-post-data">
+								<div class="image"><img src='{{ article["img"] }}!870x395' alt=""></div>
+								<div class="blog-title">
+									<h3>{{ article["title"] }}</h3>
+									<h5>{{ article["sub_title"] }}</h5>
+								</div> <!-- /.blog-title -->
+								<div class="text-wrapper">
+									<p>{% raw article['paragraphs'] %}</p>
+								</div> <!-- /text-wrapper -->
 
-					<ul class="clearfix page-changer">
-						<li class="float-left"><a href="#"><i class="flaticon-long-left-arrow"></i> &nbsp; Back to Project</a></li>
-						<li class="float-right"><a href="#">Next Project &nbsp; <i class="flaticon-long-right-arrow"></i></a></li>
-					</ul>
+								<div class="share-option">
+									<ul class="clearfix page-changer">
+										<li class="float-left"><a href="#"><i class="flaticon-long-left-arrow"></i> &nbsp; Back to Project</a></li>
+										<li class="float-right"><a href="#">Next Project &nbsp; <i class="flaticon-long-right-arrow"></i></a></li>
+									</ul>
+								</div>
+							</div> <!-- /.blog-post-data -->
+						</div> <!-- /.col- -->
+						</div> <!-- /.theme-sidebar -->
+					</div> <!-- /.row -->
 				</div> <!-- /.container -->
-			</div> <!-- /.project-details -->
-
+			</div> <!-- /.our-blog -->
 
 
 			<!--

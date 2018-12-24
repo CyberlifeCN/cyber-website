@@ -43,6 +43,7 @@ class SiteIndexHandle(tornado.web.RequestHandler):
         news = []
         for article in articles:
             data = symbol_dao.symbol_dao().find(article["article_id"])
+            data["mtime"] = timestamp_to_date(data["mtime"])
             news.append(data)
 
         category_id = "9771de04d38811e8ab5c0017fa03296f"
@@ -104,8 +105,8 @@ class SiteBlogDetailsHandle(tornado.web.RequestHandler):
     @tornado.gen.coroutine
     def get(self, article_id):
         data = symbol_dao.symbol_dao().find(article_id)
+        data["symbol"]["mtime"] = timestamp_to_datehourmin(data["mtime"])
         categories = yield category_dao.category_dao().find_all()
-
         self.render('blog-details.html',
             article=data["symbol"],
             categories=categories)
@@ -117,8 +118,10 @@ class SiteProjectHandle(tornado.web.RequestHandler):
 
 
 class SiteProjectDetailsHandle(tornado.web.RequestHandler):
-    def get(self):
-        self.render('project-details.html')
+    def get(self, article_id):
+        data = symbol_dao.symbol_dao().find(article_id)
+        self.render('project-details.html',
+            article=data["symbol"])
 
 
 class SiteServiceHandle(tornado.web.RequestHandler):
@@ -127,8 +130,10 @@ class SiteServiceHandle(tornado.web.RequestHandler):
 
 
 class SiteServiceDetailsHandle(tornado.web.RequestHandler):
-    def get(self):
-        self.render('service-details.html')
+    def get(self, article_id):
+        data = symbol_dao.symbol_dao().find(article_id)
+        self.render('service-details.html',
+            article=data["symbol"])
 
 
 class SiteShopHandle(tornado.web.RequestHandler):

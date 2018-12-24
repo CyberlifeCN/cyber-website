@@ -151,9 +151,9 @@
 			<div class="our-service section-margin-bottom-two">
 				<div class="container">
 					<div class="theme-title">
-						<h2>Business Services</h2>
-						<p>How workforce development programs turn talent puddles into talent pools , Hiring isn’t easy. Employers <br> might get hundreds </p>
-						<a href="/service" class="theme-button-one">See More Services</a>
+						<h2>解决方案</h2>
+						<p>帮助中小企业用户选择自己的门户（静态网站、动态信息发布网站、独立电商、联盟电商平台），以及各种IT解决方案。</p>
+						<a href="/service" class="theme-button-one">查看更多</a>
 					</div> <!-- /.theme-title -->
 					<div class="row">
 						{% for service in services %}
@@ -161,7 +161,7 @@
 							<div class="single-service">
 								<div class="image"><img src='{{ service["symbol"]["img"] }}!370x207' alt=""></div>
 								<div class="text">
-									<h4><a href="service-details.html">{{ service["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
+									<h4><a href='/service-details/{{ service["_id"] }}'>{{ service["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
 									<p>{{ service["symbol"]["sub_title"] }}</p>
 								</div> <!-- /.text -->
 							</div> <!-- /.single-service -->
@@ -223,19 +223,19 @@
 			<div class="our-project section-margin-bottom-two">
 				<div class="container">
 					<div class="theme-title">
-						<h2>Our Projects</h2>
-						<p>How workforce development programs turn talent puddles into talent pools , Hiring isn’t easy. Employers <br> might get hundreds </p>
-						<a href="/project" class="theme-button-one">See More Projects</a>
+						<h2>成功案例</h2>
+						<p>交付客户价值，成就我们的理想</p>
+						<a href="/project" class="theme-button-one">加载更多</a>
 					</div> <!-- /.theme-title -->
 
 					<div class="row">
 						{% for project in projects %}
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="single-project">
-								<div class="image"><img src='{{ project["symbol"]["img"] }}!370x330' alt=""></div>
+								<div class="image"><img src='{{ project["symbol"]["img"] }}!370x324' alt=""></div>
 								<div class="text">
-									<h4><a href="project-details.html">{{ project["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>Accounting, Idea</p>
+									<h4><a href='/project-details/{{ project["_id"] }}'>{{ project["symbol"]["title"] }}</a> <i class="flaticon-pie-chart"></i></h4>
+									<p>{{ project["symbol"]["sub_title"] }}</p>
 								</div> <!-- /.text -->
 							</div> <!-- /.single-project -->
 						</div> <!-- /.col- -->
@@ -243,7 +243,6 @@
 					</div> <!-- /.row -->
 				</div> <!-- /.container -->
 			</div> <!-- /.our-project -->
-
 
 
 			<!--
@@ -323,20 +322,19 @@
 			<div class="our-blog section-margin-bottom-two">
 				<div class="container">
 					<div class="theme-title">
-						<h2>Our News</h2>
-						<p>Our newst facts from our media office, programs turn talent puddles into talent pools , Hiring isn’t <br> easy. Employers might get hundreds </p>
-						<a href="/blog-grid" class="theme-button-one">See More News</a>
+						<h2>新闻</h2>
+						<p>我们的最新动态</p>
+						<a href="/blog-grid" class="theme-button-one">加载更多</a>
 					</div> <!-- /.theme-title -->
 					<div class="row">
 						{% for new in news %}
 						<div class="col-md-4 col-sm-6 col-xs-12">
 							<div class="single-blog">
-								<div class="image"><img src='{{ new["symbol"]["img"] }}!370x330'  alt=""></div>
+								<div class="image"><img src='{{ new["symbol"]["img"] }}!370x324'  alt=""></div>
 								<div class="text">
-									<div class="date">20 February 2017</div>
-									<h4><a href="blog-details.html">{{ new["symbol"]["title"] }}</a></h4>
-									<a href="#" class="author">By Mahfuz Riad</a>
-									<a href='/blog-details/{{ new["symbol"]["_id"] }}' class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+									<div class="date">{{ new["mtime"] }}</div>
+									<h4><a href="/blog-details/{{ new["_id"] }}">{{ new["symbol"]["title"] }}</a></h4>
+									<a href='/blog-details/{{ new["_id"] }}' class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
 								</div>
 							</div> <!-- /.single-blog -->
 						</div>
