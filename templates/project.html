@@ -71,20 +71,10 @@
 			-->
 			<div id="main" class="our-project section-margin-bottom">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-6 col-xs-12" v-for="(data,index) in datas" :key="index">
-							<div class="single-project">
-								<div class="image"><img :src="data.symbol.img" alt=""></div>
-
-								<div class="text">
-									<h4><a @click="detail(data._id)">{[ data.symbol.title ]}</a> <i class="flaticon-pie-chart"></i></h4>
-									<p>{[ data.symbol.sub_title ]}</p>
-								</div> <!-- /.text -->
-							</div> <!-- /.single-project -->
-						</div> <!-- /.col- -->
+					<div id="project-box" class="row">
 					</div> <!-- /.row -->
 
-					<div class="load-more-button text-center"><a @click="fetchDatas()" class="theme-button-one">加载更多</a></div>
+					<div class="load-more-button text-center"><a onclick="query()" class="theme-button-one">加载更多</a></div>
 				</div> <!-- /.container -->
 			</div> <!-- /.our-project -->
 
@@ -108,67 +98,58 @@
 
 		</div> <!-- /.main-page-wrapper -->
 
-		<!-- Js File_________________________________ -->
-		{% module Template("block/js.html") %}
+	<!-- Js File_________________________________ -->
 
-		<!-- j Query -->
-		{% module Template("block/js.html") %}
-		<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
-		<script src="{{ static_url('vue/vue.min.js') }}"></script>
+	<!-- j Query -->
+	{% module Template("block/js.html") %}
+	<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
 
-		<script type="text/javascript">
-        $.toast.prototype.defaults.duration = 1200;
-        let app = new Vue({
-            el: '#main',
-            delimiters: ['{[', ']}'],
-            data() {
-                return {
-                    limit: 12,
-                    datas: [],
-										pageNum: 1,
-                }
-            },
-            computed: {
-            },
-            methods: {
-                fetchDatas() {
-                    _this = this
-                    $.ajax({
-                        type: "GET",
-                        url: `/website/api/categories/9771de04d38811e8ab5c0017fa03296f/articles?limit=${_this.limit}&page=${_this.pageNum}`,
-                        dataType: "json",
-                        success: (data) => {
-                            switch (data.errCode) {
-                                case 200:
-																		console.log(data);
-																		var array = data.rs.data;
-																		for (var i=0;i<array.length;i++) {
-																				array[i].symbol.img = array[i].symbol.img+"!370x207";
-																				_this.datas.push(array[i]);
-																		}
-																		this.pageNum++;
-                                    break;
-                                case 401:
-                                    $.toast("查询失败,权限错误[errCode:401]", "forbidden");
-                                    break;
-                                case 500:
-                                    $.toast("查询失败,未知服务器错误[errorCode:500]", "forbidden");
-                                    break;
-                            }
-                        },
-                        error: () => {
-                            $.toast("查询失败,请检查网络连接", "forbidden");
-                        }
-                    })
-                },
-                detail(uuid) {
-                    window.location.href = '/project-details/'+uuid;
-                },
-            },
-            mounted() {
-                this.fetchDatas();
-            }
-        });
+	<script type="text/javascript">
+		$.toast.prototype.defaults.duration = 1200;
+
+		var pageNum = 1;//当前页数
+		var limit = 12;//每页显示数
+        function query() {
+			$.ajax({
+				type: "GET",
+				url: '/website/api/categories/9771de04d38811e8ab5c0017fa03296f/articles?limit='+limit+'&page='+pageNum,
+				dataType: "json",
+				success: (data) => {
+					switch (data.errCode) {
+						case 200:
+							projects = data.rs.data;
+							for (var i in projects) {
+								var inner_html = '<div class="col-md-4 col-sm-6 col-xs-12">';
+								inner_html += '<div class="single-project">';
+								inner_html += '<div class="image"><img src="'+ projects[i].symbol.img +'!370x207" alt=""></div>';
+								inner_html += '<div class="text">';
+								inner_html += '<h4><a href="/project-details/'+ projects[i]._id +'">'+ projects[i].symbol.title +'</a> <i class="flaticon-pie-chart"></i></h4>';
+								inner_html += '<p>'+ projects[i].symbol.sub_title +'</p>';
+								inner_html += '</div>'; //<!-- /.text -->
+								inner_html += '</div>'; //<!-- /.single-project -->
+								inner_html += '</div>'; //<!-- /.col- -->
+
+								$('#project-box').append(inner_html);
+							};
+							pageNum++;
+							break;
+						case 401:
+							$.toast("查询失败,权限错误[errCode:401]", "forbidden");
+							break;
+						case 500:
+							$.toast("查询失败,未知服务器错误[errorCode:500]", "forbidden");
+							break;
+					}
+				},
+				error: () => {
+					$.toast("查询失败,请检查网络连接", "forbidden");
+				}
+			})
+        };
+
+		$(function(){
+		 	 query();
+		});
     </script>
 	</body>
 </html>

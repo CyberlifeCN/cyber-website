@@ -11,7 +11,6 @@
 		<title>inobiz -  Business & Agency Template</title>
 
 		{% module Template("block/css.html") %}
-
 	</head>
 
 	<body>
@@ -23,8 +22,6 @@
 			<div id="loader-wrapper">
 				<div id="loader"></div>
 			</div>
-
-
 
 
 			<!--
@@ -71,18 +68,7 @@
 			-->
 			<div id="main" class="our-blog section-margin-bottom">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-4 col-sm-6 col-xs-12" v-for="(data,index) in datas" :key="index">
-							<div class="single-blog">
-								<div class="image"><img :src="data.symbol.img" alt=""></div>
-								<div class="text">
-									<div class="date">{[ timestampToDatetime(data.mtime*1000) ]}</div>
-									<h4><a @click="detail(data._id)">{[ data.symbol.title ]}</a></h4>
-									<a href="#" class="author"></a>
-									<a @click="detail(data._id)" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-								</div>
-							</div> <!-- /.single-blog -->
-						</div>
+					<div id="news-box" class="row">
 					</div> <!-- /.row -->
 					<div class="load-more-button text-center"><a @click="fetchDatas()" class="theme-button-one">加载更多</a></div>
 				</div>
@@ -107,70 +93,63 @@
 
 		</div> <!-- /.main-page-wrapper -->
 
-		<!-- Js File_________________________________ -->
-		{% module Template("block/js.html") %}
+	<!-- Js File_________________________________ -->
+	{% module Template("block/js.html") %}
 
-		<!-- j Query -->
-		{% module Template("block/js.html") %}
-		<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
-		<script src="{{ static_url('vue/vue.min.js') }}"></script>
+	<!-- j Query -->
+	{% module Template("block/js.html") %}
+	<script src="{{ static_url('weui/js/jquery-weui.min.js') }}"></script>
+	<script type="text/javascript">
+		$.toast.prototype.defaults.duration = 1200;
 
-		<script type="text/javascript">
-        $.toast.prototype.defaults.duration = 1200;
-        let app = new Vue({
-            el: '#main',
-            delimiters: ['{[', ']}'],
-            data() {
-                return {
-                    limit: 12,
-                    datas: [],
-										pageNum: 1,
-                }
-            },
-            computed: {
-            },
-            methods: {
-                fetchDatas() {
-                    _this = this
-                    $.ajax({
-                        type: "GET",
-                        url: `/website/api/categories/db957c6ed38611e8be700017fa03296f/articles?limit=${_this.limit}&page=${_this.pageNum}`,
-                        dataType: "json",
-                        success: (data) => {
-                            switch (data.errCode) {
-                                case 200:
-																		console.log(data);
-																		var array = data.rs.data;
-																		for (var i=0;i<array.length;i++) {
-																				array[i].symbol.img = array[i].symbol.img+"!370x207";
-																				_this.datas.push(array[i]);
-																		}
-																		this.pageNum++;
-                                    break;
-                                case 401:
-                                    $.toast("查询失败,权限错误[errCode:401]", "forbidden");
-                                    break;
-                                case 500:
-                                    $.toast("查询失败,未知服务器错误[errorCode:500]", "forbidden");
-                                    break;
-                            }
-                        },
-                        error: () => {
-                            $.toast("查询失败,请检查网络连接", "forbidden");
-                        }
-                    })
-                },
-                detail(uuid) {
-                    window.location.href = '/blog-details/'+uuid;
-                },
-								timestampToDatetime(timestamp) {
-                    return new Date(parseInt(timestamp)).toLocaleString().replace(/:\d{1,2}$/, ' ');
-                },
-            },
-            mounted() {
-                this.fetchDatas();
-            }
-        });
+		function timestampToDatetime(timestamp) {
+			return new Date(parseInt(timestamp)).toLocaleString().replace(/:\d{1,2}$/, ' ');
+		}
+
+		var pageNum = 1;//当前页数
+		var limit = 12;//每页显示数
+        function query() {
+			$.ajax({
+				type: "GET",
+				url: '/website/api/categories/db957c6ed38611e8be700017fa03296f/articles?limit='+limit+'&page='+pageNum,
+				dataType: "json",
+				success: (data) => {
+					switch (data.errCode) {
+						case 200:
+							news = data.rs.data;
+							for (var i in news) {
+								var inner_html = '<div class="col-md-4 col-sm-6 col-xs-12">';
+								inner_html += '<div class="single-blog">';
+								inner_html += '<div class="image"><img src="'+ news[i].symbol.img +'!370x207" alt=""></div>';
+								inner_html += '<div class="text">';
+								inner_html += '<div class="date">'+ timestampToDatetime(news[i].mtime*1000) +'</div>';
+								inner_html += '<h4><a href="/blog-details/'+ news[i]._id +'">'+ news[i].symbol.title +'</a></h4>';
+								inner_html += '<a href="/blog-details/'+news[i]._id+'" class="view-more"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>';
+								inner_html += '</div>'; //<!-- /.text -->
+								inner_html += '</div>'; //<!-- /.single-blog -->
+								inner_html += '</div>'; //<!-- /.col- -->
+
+								$('#news-box').append(inner_html);
+							};
+							pageNum++;
+							break;
+						case 401:
+							$.toast("查询失败,权限错误[errCode:401]", "forbidden");
+							break;
+						case 500:
+							$.toast("查询失败,未知服务器错误[errorCode:500]", "forbidden");
+							break;
+					}
+				},
+				error: () => {
+					$.toast("查询失败,请检查网络连接", "forbidden");
+				}
+			})
+        };
+
+		$(function(){
+		 	 query();
+		});
     </script>
 	</body>
 </html>

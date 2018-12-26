@@ -25,8 +25,6 @@
 			</div>
 
 
-
-
 			<!--
 			=============================================
 				Theme Header
@@ -52,14 +50,12 @@
 			<div class="theme-inner-banner">
 				<div class="opacity">
 					<div class="container">
-						<p>Inpire Your Business, Our talent team member of business agency </p>
-						<h2>Contact</h2>
+						<p>遇到任何商务、技术问题… 请留下信息</p>
+						<h2>联系我们</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
+							<li><a href="/">首页</a></li>
 							<li>.</li>
-							<li><a href="#">Page</a></li>
-							<li>.</li>
-							<li>Contact</li>
+							<li>联系我们</li>
 						</ul>
 					</div> <!-- /.container -->
 				</div> <!-- /.opacity -->
@@ -73,24 +69,14 @@
 			-->
 			<div class="contact-form section-margin-bottom">
 				<div class="container">
-					<div class="text-center">
-						<h2>Let's talk</h2>
-						<p>Suspe ndisse suscipit sagittis leo sit met dimentum estibulum issim posuere cubilia Curae Suspendisse at <br> consectetur massa. Curabitur non ipsum nisinec dapibus elit. Donec nec</p>
-					</div>
 					<form action="inc/sendemail.php" class="form-validation" autocomplete="off">
 						<div class="row">
-							<div class="col-md-4 col-xs-12">
-								<input type="text" placeholder="Name" name="name">
-							</div>
 							<div class="col-md-4 col-sm-6 col-xs-12">
-								<input type="email" placeholder="Email" name="email">
-							</div>
-							<div class="col-md-4 col-sm-6 col-xs-12">
-								<input type="text" placeholder="Subject" name="sub">
+								<input type="email" placeholder="电子邮箱 或 电话号码" id="email">
 							</div>
 						</div> <!-- /.row -->
-						<textarea placeholder="Message" name="message"></textarea>
-						<button class="theme-button-one p-bg-color">Send us</button>
+						<textarea placeholder="您的问题" id="message"></textarea>
+						<button id="sendMessageBtn" class="theme-button-one p-bg-color">发送给我们</button>
 					</form>
 
 					<!--Contact Form Validation Markup -->
@@ -99,7 +85,7 @@
 						<div id="success">
 							<button class="closeAlert"><i class="fa fa-times" aria-hidden="true"></i></button>
 							<div class="wrapper">
-				               	<p>Your message was sent successfully.</p>
+				               	<p id="success-message">留言成功，我们会在8小时内回复您邮件！</p>
 				             </div>
 				        </div>
 				    </div> <!-- End of .alert-wrapper -->
@@ -107,7 +93,7 @@
 				        <div id="error">
 				           	<button class="closeAlert"><i class="fa fa-times" aria-hidden="true"></i></button>
 				           	<div class="wrapper">
-				               	<p>Sorry!Something Went Wrong.</p>
+				               	<p>对不起，信息填写不完整！</p>
 				            </div>
 				        </div>
 				    </div> <!-- End of .alert-wrapper -->
@@ -128,22 +114,19 @@
 							<ul class="address">
 								<li>
 									<i class="fa fa-map-marker" aria-hidden="true"></i>
-									Barisal City , NY 10036, United States
+									北京市朝阳区关东店11号楼四楼（呼家楼集中办公区144号）
 								</li>
 								<li>
 									<i class="fa fa-envelope-o" aria-hidden="true"></i>
-									inobiz_info@gmail.com
+									support@cyber-life.cn
 								</li>
 								<li>
 									<i class="fa fa-phone" aria-hidden="true"></i>
-									+8801713879773
+									+18625219583
 								</li>
 							</ul>
 							<ul class="icon">
-								<li><a href="" class="tran3s"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-dribbble" aria-hidden="true"></i></a></li>
-								<li><a href="" class="tran3s"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="https://github.com/CyberlifeCN" class="tran3s"><i class="fa fa-github" aria-hidden="true"></i></a></li>
 							</ul>
 						</div> <!-- /.address-list -->
 
@@ -182,4 +165,44 @@
 
 		</div> <!-- /.main-page-wrapper -->
 	</body>
+	<script>
+		$(function() {
+			// 添加留言操作
+			$('#sendMessageBtn').on('click',function(){
+				var email = $('#email').val();
+				var message = $('#message').val();
+
+				if(email == "" || message == ""){
+					$("#alert-error").show();
+					return false;
+				}else{
+					var data = {
+						email: email,
+						content: message,
+					};
+					var json = JSON.stringify(data);
+
+					$.ajax({
+						type: "POST",
+						url: "/contact/api/messages",
+						dataType: "json",
+						data: json,
+						contentType: 'application/json',
+						success: function(data, status, xhr) {
+							$("#email").val("");
+							$("#message").val("");
+							$("#alert-success").show();
+							return true;
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {
+							console.log("XMLHttpRequest.status:" + XMLHttpRequest.status);
+						},
+						complete: function(XMLHttpRequest, textStatus) {
+							this; // 调用本次AJAX请求时传递的options参数
+						}
+					});
+				}
+			})
+		});
+	</script>
 </html>
